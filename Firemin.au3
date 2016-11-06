@@ -54,7 +54,7 @@
 	;===============================================================================================================
 	#AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 	#AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-	#AutoIt3Wrapper_Res_Fileversion=4.0.2.4599
+	#AutoIt3Wrapper_Res_Fileversion=4.0.2.4601
 	#AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 	#AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 	#AutoIt3Wrapper_Res_HiDpi=Y                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -196,10 +196,10 @@ Opt("WinWaitDelay", 250) ;~ 250 milliseconds
 #include "Includes\ReBar_Splash.au3"
 #include "Includes\ReBar_Icons.au3"
 
+#include "UDF\ReBar_Options.au3"
+
 #include "Includes\ReBar_FFLabels.au3"
 #include "Includes\ReBar_Startup.au3"
-
-#include "UDF\ReBar_Options.au3"
 
 
 ;===============================================================================================================
@@ -458,16 +458,16 @@ Func _StartCoreDlg()
 	GUICtrlSetOnEvent($g_BtnSetCancel, "_CloseCoreDlg")
 	GUICtrlSetOnEvent($g_BtnSetSave, "_SaveSettings")
 
+	_LoadBrowser($g_SetBrowserPath)
+	_GetCoreProcessUsage()
+	_GetCoreProcessPeak()
+	_SetControlStates()
+
 	GUISetState(@SW_SHOW, $g_ReBarCoreGui)
 	GUISetOnEvent($GUI_EVENT_CLOSE, "_CloseCoreDlg", $g_ReBarCoreGui)
 
 	AdlibRegister("_GetCoreProcessPeak", 5000)
 	AdlibRegister("_OnMainIconHover", 50)
-
-	_LoadBrowser($g_SetBrowserPath)
-	_GetCoreProcessUsage()
-	_GetCoreProcessPeak()
-	_SetControlStates()
 
 	GUICtrlSetState($g_ChkStartWindows, FileExists(@StartupDir & "\Firemin.lnk"))
 
