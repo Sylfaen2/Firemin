@@ -35,6 +35,9 @@ If Not IsDeclared("oErrorHandler") Then Global $oErrorHandler
 Func _ShutdownProgram()
 
 	_OnCoreClosing()
+
+	If $g_ReBarClearCacheOnExit == 1 Then DirRemove($g_ReBarCachePath, 1)
+
 	WinSetTrans($g_ReBarCoreGui, Default, 255)
 
 	If $g_ReBarHasTrayIcon Then TraySetState(2)

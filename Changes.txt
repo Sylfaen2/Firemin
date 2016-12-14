@@ -3,6 +3,23 @@ Rizonesoft Firemin CHANGES
 ==================================================
 
 --------------------------------------------------
+Version 4.0.2.4615 (December 14, 2016)
+--------------------------------------------------
+
+- Critical Update Notification Fix.
+- More optimization timing options.
+
+--------------------------------------------------
+Version 4.0.2.4612 (December 04, 2016)
+--------------------------------------------------
+
+- Now shows the Firemin icon if exe not found.
+- 64 Bit version included.
+- Smoother process statistics display.
+- Minor Interface tweeks.
+- Minor Bug Fixes.
+
+--------------------------------------------------
 Version 4.0.2.4600 (November 06, 2016)
 --------------------------------------------------
 

@@ -1,8 +1,8 @@
 #include-once
 
-Global $g_ReBarFormWidth = 450
-Global $g_ReBarFormHeight = 500
-Global $g_ReBarHasTrayIcon = 1
-Global $g_ReBarLogEnabled = 0
-Global $g_ReBarSingleton = 0
-Global $g_ReBarSplashEnable = 0
+$g_ReBarFormWidth = 450
+$g_ReBarFormHeight = 500
+$g_ReBarHasTrayIcon = 1
+$g_ReBarLogEnabled = 0
+$g_ReBarSingleton = 0
+$g_ReBarSplashEnable = 0

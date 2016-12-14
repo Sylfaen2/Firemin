@@ -145,7 +145,7 @@ Func _SoftwareUpdateCheck()
 ;~ 	EndIf
 
 	Local $sLocalFile = _WinAPI_GetTempFileName($g_ReBarCachePath, "u_")
-	Local $hDownload = InetGet($g_ReBarUpdateRemote, $sLocalFile, $INET_FORCEBYPASS, $INET_DOWNLOADBACKGROUND)
+	Local $hDownload = InetGet($g_ReBarUpdateRemote, $sLocalFile, $INET_FORCERELOAD, $INET_DOWNLOADBACKGROUND)
 
 	Do
 		Sleep(250)

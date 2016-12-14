@@ -3,8 +3,8 @@ Firemin
 © Rizonesoft. All rights reserved
 https://www.rizonesoft.com
 ==================================================
-Version: 4.0.2.4600
-Release Date: 06 November, 2016
+Version: 4.0.2.4615
+Release Date: 14 December, 2016
 System Requirements: Windows XP, Vista, 2008, 7, 8, 8.1, 10 
 Disk Space: 1 MB
 ==================================================

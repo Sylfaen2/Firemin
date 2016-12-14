@@ -67,7 +67,7 @@ Func _ResetWorkingDirectories()
 	$g_ReBarCacheBase = $g_ReBarWorkingDir & "\Cache"
 	$g_ReBarCachePath = $g_ReBarCacheBase & "\" & $g_ReBarShortName
 	$g_ReBarLogFilename = $g_ReBarShortName & ".log"
-	$g_ReBarLogBase = $g_ReBarWorkingDir & "\Logging"
+	$g_ReBarLogBase = $g_ReBarWorkingDir & "\Logging\" & $g_ReBarShortName
 	$g_ReBarLogPath = $g_ReBarLogBase & "\" & $g_ReBarLogFilename
 
 	If $g_ReBarCacheEnabled == 1 Then DirCreate($g_ReBarCachePath)

@@ -138,3 +138,18 @@ Func _DrawStatusSizeFromPercentage($FrBar, $Perc, $BcLeft, $BcTop, $BcWidth, $Bc
 	EndIf
 
 EndFunc
+
+
+Func _ReBarRebootWindows()
+
+	Local $iMBox = MsgBox(65, "Rebooting Windows!", "Make sure your work is saved before continuing. " & _
+			"Answer 'OK' to reboot your computer or 'Cancel' if you would like to reboot later." & @CRLF & @CRLF & _
+			"Your computer will reboot automatically in 60 seconds.", 60)
+	Switch $iMBox
+		Case 1, -1
+			Shutdown(18)
+		Case 2
+			Return
+	EndSwitch
+
+EndFunc   ;==>_RebootWindows

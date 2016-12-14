@@ -42,6 +42,7 @@ Global $g_ReBarAppDataPath = $g_ReBarAppDataParent & "\" & $g_ReBarShortName
 ; Caching Options
 ;===============================================================================================================
 Global $g_ReBarCacheEnabled = 1
+Global $g_ReBarClearCacheOnExit = 0
 Global $g_ReBarCacheBase = $g_ReBarWorkingDir & "\Cache"
 Global $g_ReBarCachePath = $g_ReBarCacheBase & "\" & $g_ReBarShortName
 
@@ -64,7 +65,7 @@ Global $g_ReBarLogFileWrite = 0
 Global $g_ReBarLogEnabled = 1														;~ Enable/Disable ReBar logging subsystem.
 Global $g_ReBarLogStorage = 5242880 ; Bytes
 Global $g_ReBarLogFilename = $g_ReBarShortName & ".log"
-Global $g_ReBarLogBase = $g_ReBarWorkingDir & "\Logging"
+Global $g_ReBarLogBase = $g_ReBarWorkingDir & "\Logging\" & $g_ReBarShortName
 Global $g_ReBarLogPath = $g_ReBarLogBase & "\" & $g_ReBarLogFilename
 
 ;===============================================================================================================
@@ -97,6 +98,7 @@ Global $g_ReBarSplashAni = @ScriptDir & "\Themes\Processing\32\Stroke.ani"
 ;===============================================================================================================
 Global $g_ReBarResFugue = @ScriptDir & "\Fugue.dll"
 Global $g_ReBarResDoors = @ScriptDir & "\DoorsShell.dll"
+Global $g_ReBarAni32Web2 = @ScriptDir & "\Themes\Processing\32\Web2.ani"
 
 ;===============================================================================================================
 ; About Dialog Options
@@ -117,4 +119,20 @@ Global $g_ReBarAboutTwitter = "https://twitter.com/rizonesoft"
 Global $g_ReBarAboutGoogle = "https://plus.google.com/+Rizonesoftsa/posts"
 Global $g_ReBarAboutLinkedIn = "https://www.linkedin.com/in/rizonesoft"
 Global $g_ReBarAboutRSS = "http://www.rizonesoft.com/feed/"
-Global $g_ReBarAboutSupport = "http://www.rizonesoft.com"
+Global $g_ReBarAboutSupport = "http://www.rizonesoft.com/contact/"
+
+;===============================================================================================================
+; Preferences Dialog Options
+;===============================================================================================================
+Global $g_ReBarPrefsGui
+Global $g_ReBarChkLogEnabled
+Global $g_ReBarInLogSize
+Global $g_ReBarChkCacheOnExit
+Global $g_ReBarInLogSizeTemp
+Global $g_ReBarLabelLogSize
+Global $g_ReBarLabelCacheSize
+Global $g_ReBarBtnClearLog
+Global $g_ReBarBtnClearCache
+Global $g_ReBarBtnSavePrefs
+Global $g_LabelPrefsMessage
+Global $g_ReBarShowLogging = 1

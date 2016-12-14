@@ -45,6 +45,19 @@ Func _ConfigureWindowsService($sServiceName, $iConfig = 2)
 EndFunc
 
 
+Func _GetServiceConfiguration($sServiceName)
+
+	Local $sRegService = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\" & $sServiceName
+	Local $iReturn = RegRead($sRegService, "Start")
+	If Not @error Then
+		Return $iReturn
+	Else
+		Return SetError(1)
+	EndIf
+
+EndFunc
+
+
 Func _ReregisterDLL($sFileName, $Param = "/s")
 
 	Local $sCleanFileName = StringReplace($sFileName, Chr(34), "", 0, $STR_NOCASESENSE)

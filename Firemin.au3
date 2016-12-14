@@ -8,7 +8,7 @@
 	;===============================================================================================================
 	; AutoIt3 Settings
 	;===============================================================================================================
-	#AutoIt3Wrapper_UseX64=N										;~ (Y/N) Use AutoIt3_x64 or Aut2Exe_x64. Default=N
+	#AutoIt3Wrapper_UseX64=Y										;~ (Y/N) Use AutoIt3_x64 or Aut2Exe_x64. Default=N
 	#AutoIt3Wrapper_Run_Debug_Mode=N								;~ (Y/N) Run Script with console debugging. Default=N
 	#AutoIt3Wrapper_Run_SciTE_Minimized=Y 							;~ (Y/N) Minimize SciTE while script is running. Default=N
 	#AutoIt3Wrapper_Run_SciTE_OutputPane_Minimized=N				;~ (Y/N) Minimize SciTE output pane at run time. Default=N
@@ -31,7 +31,7 @@
 	;===============================================================================================================
 	; AutoIt3 Settings
 	;===============================================================================================================
-	#AutoIt3Wrapper_UseX64=N										;~ (Y/N) Use AutoIt3_x64 or Aut2Exe_x64. Default=N
+	#AutoIt3Wrapper_UseX64=Y										;~ (Y/N) Use AutoIt3_x64 or Aut2Exe_x64. Default=N
 	#AutoIt3Wrapper_Version=B                        				;~ (B/P) Use Beta or Production for AutoIt3 and Aut2Eex. Default is P
 	#AutoIt3Wrapper_Run_Debug_Mode=N								;~ (Y/N) Run Script with console debugging. Default=N
 	;#AutoIt3Wrapper_Autoit3Dir=									;~ Optionally override the AutoIt3 install directory to use.
@@ -43,18 +43,18 @@
 	#AutoIt3Wrapper_Icon=Themes\Icons\Firemin.ico					;~ Filename of the Ico file to use for the compiled exe
 	#AutoIt3Wrapper_OutFile_Type=exe								;~ exe=Standalone executable (Default); a3x=Tokenised AutoIt3 code file
 	#AutoIt3Wrapper_OutFile=Firemin.exe								;~ Target exe/a3x filename.
-	;#AutoIt3Wrapper_OutFile_X64=Firemin_X64.exe					;~ Target exe filename for X64 compile.
+	#AutoIt3Wrapper_OutFile_X64=Firemin_X64.exe						;~ Target exe filename for X64 compile.
 	;#AutoIt3Wrapper_Compression=4									;~ Compression parameter 0-4  0=Low 2=normal 4=High. Default=2
 	;#AutoIt3Wrapper_UseUpx=Y										;~ (Y/N) Compress output program.  Default=Y
 	;#AutoIt3Wrapper_UPX_Parameters=								;~ Override the default settings for UPX.
 	#AutoIt3Wrapper_Change2CUI=N									;~ (Y/N) Change output program to CUI in stead of GUI. Default=N
-	#AutoIt3Wrapper_Compile_both=N									;~ (Y/N) Compile both X86 and X64 in one run. Default=N
+	#AutoIt3Wrapper_Compile_both=Y									;~ (Y/N) Compile both X86 and X64 in one run. Default=N
 	;===============================================================================================================
 	; Target Program Resource info
 	;===============================================================================================================
 	#AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 	#AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-	#AutoIt3Wrapper_Res_Fileversion=4.0.2.4601
+	#AutoIt3Wrapper_Res_Fileversion=4.0.2.4616
 	#AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 	#AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 	#AutoIt3Wrapper_Res_HiDpi=Y                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -386,7 +386,7 @@ Func _StartCoreDlg()
 
 	GUICtrlCreateGroup("Load Browser", 10, 85, 430, 180)
 	GUICtrlSetFont(-1, 10, 700, 2)
-	$g_IconProfile = GUICtrlCreateIcon("", 0, 20, 110, 48, 48)
+	$g_IconProfile = GUICtrlCreateIcon($g_ReBarIcon, 0, 20, 110, 48, 48)
 	$gH_IconProfile = GUICtrlGetHandle($g_IconProfile)
 	$g_LblProfileTitle = GUICtrlCreateLabel(FileGetVersion($g_SetBrowserPath, $FV_PRODUCTNAME) & " " & _
 		FileGetVersion($g_SetBrowserPath), 78, 115, 350, 20)
@@ -416,7 +416,7 @@ Func _StartCoreDlg()
 	GUICtrlSetFont(-1, 10, 700, 2)
 	$g_ChkReduceEnabled = GUICtrlCreateCheckbox(" Reduce memory every", 20, 305, 150, 20)
 	$g_ComboReduceMill = GUICtrlCreateCombo("", 180, 305, 65, 20)
-	GUICtrlSetData($g_ComboReduceMill, "100|200|300|400|500|600|700|800|900", $g_SetBoost)
+	GUICtrlSetData($g_ComboReduceMill, "100|200|300|400|500|600|700|800|900|1000|2000|3000|4000|5000|6000|7000|8000|9000", $g_SetBoost)
 	GUICtrlCreateLabel("milliseconds", 252, 308, 100, 20)
 
 	$g_ChkCleanLimit = GUICtrlCreateCheckbox(" Only reduce memory if usage is over", 20, 328, 240, 20)
@@ -459,8 +459,6 @@ Func _StartCoreDlg()
 	GUICtrlSetOnEvent($g_BtnSetSave, "_SaveSettings")
 
 	_LoadBrowser($g_SetBrowserPath)
-	_GetCoreProcessUsage()
-	_GetCoreProcessPeak()
 	_SetControlStates()
 
 	GUISetState(@SW_SHOW, $g_ReBarCoreGui)
@@ -471,6 +469,8 @@ Func _StartCoreDlg()
 
 	GUICtrlSetState($g_ChkStartWindows, FileExists(@StartupDir & "\Firemin.lnk"))
 
+	_GetCoreProcessUsage()
+	_GetCoreProcessPeak()
 	_SoftwareUpdateCheck()
 
 EndFunc
@@ -609,7 +609,7 @@ Func _ReturnSafeModeCommand()
         Next
     EndIf
 
-	Return ""
+	Return SetError(1, 0, "")
 
 EndFunc
 
@@ -689,6 +689,8 @@ Func _LoadBrowser($sBrowserPath)
 
 	Else
 
+		; GUICtrlSetImage($g_IconProfile, $g_ReBarIcon, -1)
+		_WinAPI_DestroyIcon(_SendMessage($gH_IconProfile, $STM_SETIMAGE, 1, _WinAPI_ShellExtractIcon($g_ReBarIcon, 0, 48, 48)))
 		$sBrowserPath = "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
 		;_LoadBrowser($sBrowserPath)
 		IniWrite($g_ReBarPathIni, $g_ReBarShortName, "BrowserPath", $sBrowserPath)
