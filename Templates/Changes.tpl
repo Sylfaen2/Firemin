@@ -1,0 +1,170 @@
+==================================================
+%{:COMPANY:} %{:RELEASE:} CHANGES
+==================================================
+
+--------------------------------------------------
+Version %{VERSION} (%{:MONTH:} %{DAY}, %{YEAR})
+--------------------------------------------------
+
+- Cleaner optimized code.
+- Removed unsupported Win10 AutoIt directive.
+- External resource dlls removed. Icons now embedded in exe.
+- Improved update notification system with option to disable update checks.
+- Added option to manually check for updates to the Help menu.
+- Added update animation.
+- Added customizable splash delay.
+- Added GitHub link to the Help menu to quickly create an issue.
+- Added GitHub link on the About Dialog.
+- Added Downloads, Contact and Donate links to the Help menu.
+- New PayPal.me donation link (PayPal.me/rizonesoft).
+- New none-intrusive Donate prompt after a set time. (120 Hours Default)
+  The Donate prompt will only be shown once.
+- Improved custom Progress Bar. 
+- Improved About Dialog (New Mouse Hover Effects for Image Buttons).
+- Improved Splash Screen (New custom Progress Bar).
+- Added Localization (Translations).
+- Alt+F4 now closes the program and not Esc. (Safer!)
+- Moved Documents to Docs folder.
+- Show Settings on First Run.
+- More Boost and Limit options.
+- Extended Processes moved to Preferences dialog.
+- Safe mode command database now working.
+- Minor cosmetic changes.
+
+--------------------------------------------------
+Version 4.0.2.4615 (December 14, 2016)
+--------------------------------------------------
+
+- Critical Update Notification Fix.
+- More optimization timing options.
+
+--------------------------------------------------
+Version 4.0.2.4612 (December 04, 2016)
+--------------------------------------------------
+
+- Now shows the Firemin icon if exe not found.
+- 64 Bit version included.
+- Smoother process statistics display.
+- Minor Interface tweeks.
+- Minor Bug Fixes.
+
+--------------------------------------------------
+Version 4.0.2.4600 (November 06, 2016)
+--------------------------------------------------
+
+- Exes are now signed.
+- New installation utility.
+- Now built on the ReBar Framework.
+- New Update Notification System.
+- Resources moved to external Dll files.
+- Added support for Windows 10.
+- New Interface.
+- New Logging System.
+- Cleaner Optimized Code.
+- Removed Profiles (Now detects process from selected executable).
+- Now shows process usage on main Firemin window.
+- New Extended Processes feature.
+
+--------------------------------------------------
+Version 3.9.7.3971 (January 9th, 2015)
+--------------------------------------------------
+
+- Options are being saved now.
+- Traymenu text now updates on profile change.
+- Fixed the Save profile button (it updates correctly now).
+- Fixed the Limit Clean function.
+- Palemoon Profile Fixed (Safe Mode Command).
+- Completed the Waterfox profile.
+- Added a Cyberfox profile.
+- Added a Comodo IceDragon profile.
+- Karma system implemented.
+
+--------------------------------------------------
+Version 3.9.0.3905 (January 3rd, 2015)
+--------------------------------------------------
+
+- Everything redesigned from scratch.
+- New Options Dialog.
+- New Select, Create and Edit Profiles.
+- New Firefox Profile.
+- New Palemoon Profile.
+
+--------------------------------------------------
+Version 2.0.8.2086 (August 31st, 2014)
+--------------------------------------------------
+
+- Now Open Source (GNU General Public License version 3)
+
+--------------------------------------------------
+Version 2.0.8.2083 (May 22nd, 2014)
+--------------------------------------------------
+
+- Some minor bug fixes
+- Some minor cosmetic changes
+
+--------------------------------------------------
+Version 2.0.5.2055 (January 10th, 2014)
+--------------------------------------------------
+
+- Now compatible with Windows 8.1.
+- The About page can now be opened without an error
+- Some minor cosmetic changes on the Options and About windows.
+- Updated the documentation and About pages
+- Some minor bug fixes and compatibility changes
+
+--------------------------------------------------
+Version 2.0.1.11 (February 15th, 2013)
+--------------------------------------------------
+
+- Windows 8 and 64Bit compatibility.
+- Sarcasm added.
+- A few cosmetic changes.
+- Some minor bug fixes.
+
+--------------------------------------------------
+Version 0.3.6.369 (May 27th, 2012)
+--------------------------------------------------
+
+Removed the update option because our server was getting a little overloaded.
+
+--------------------------------------------------
+Version 0.3.6.365 (May 25th, 2012)
+--------------------------------------------------
+
+Some link Updates
+
+--------------------------------------------------
+Version 0.3.6.360 (May 15th, 2012)
+--------------------------------------------------
+
+New Update Option
+
+--------------------------------------------------
+Version 0.3.5.351 (May 15th, 2012)
+--------------------------------------------------
+
+Now detects Firemin folder access permissions and writes settings to INI file and Registry respectively.
+
+--------------------------------------------------
+Version 0.1.9.195 (July 5th, 2011)
+--------------------------------------------------
+
+- New Options dialog
+- New About dialog
+- Now you can change memory minimization rate
+- Launch Firefox (Safe Mode) when Firemin starts
+- Firefox Optimization function (uses SQLite vacuum for databases)
+
+--------------------------------------------------
+Version 0.0.1.19 (June 7th, 2011)
+--------------------------------------------------
+
+New Configuration file for tweaking it a little.
+
+--------------------------------------------------
+Version 0.0.1.12 (June 3rd, 2011)
+--------------------------------------------------
+
+No history recorded.
+
+==================================================

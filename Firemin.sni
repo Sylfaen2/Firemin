@@ -1,0 +1,138 @@
+[Rizonesoft SDK]
+Compatibilty = Rizonesoft SDK 5
+Script = Firemin.au3
+
+[Modules]
+Build = 1
+Compress = 1
+Sign = 1
+Documentation = 1
+Import = 0
+Distribute = 1
+Portable = 1
+Installation = 1
+SignInstall = 1
+Tidy = 0
+Sourcecode = 1
+GitHub = 1
+SourcePackage = 1
+UpdateFile = 1
+
+[Signing]
+CertificateSet = Signing\Signing.ini
+Website = https://www.rizonesoft.com
+
+[Distribute]
+File=Firemin.exe
+File=Firemin_X64.exe
+File=Firemin.ini
+File=Docs\Changes.txt
+File=Docs\License.txt
+File=Docs\Readme.txt
+File=Themes\Processing\32\Stroke.ani
+File=Themes\Processing\64\Globe.ani
+
+[Sources]
+File=Docs\Changes.txt
+File=Docs\License.txt
+File=Docs\Readme.txt
+File=Templates\Changes.tpl
+File=Templates\License.tpl
+File=Templates\Readme.tpl
+File=Themes\Icons\Error.ico
+File=Themes\Icons\Firemin.ico
+File=Themes\Icons\FireminH.ico
+File=Themes\Icons\Update.ico
+File=Themes\Icons\About\About.ico
+File=Themes\Icons\About\Facebook.ico
+File=Themes\Icons\About\FacebookH.ico
+File=Themes\Icons\About\GitHub.ico
+File=Themes\Icons\About\GitHubH.ico
+File=Themes\Icons\About\GooglePlus.ico
+File=Themes\Icons\About\GooglePlusH.ico
+File=Themes\Icons\About\PayPal.ico
+File=Themes\Icons\About\PayPalH.ico
+File=Themes\Icons\About\sa.ico
+File=Themes\Icons\About\saH.ico
+File=Themes\Icons\About\Twitter.ico
+File=Themes\Icons\About\TwitterH.ico
+File=Themes\Icons\Dialogs\Check.ico
+File=Themes\Icons\Dialogs\Error.ico
+File=Themes\Icons\Dialogs\Gear.ico
+File=Themes\Icons\Dialogs\Information.ico
+File=Themes\Icons\Dialogs\Love.ico
+File=Themes\Icons\Flags\af.ico
+File=Themes\Icons\Flags\ar.ico
+File=Themes\Icons\Flags\bg.ico
+File=Themes\Icons\Flags\cs.ico
+File=Themes\Icons\Flags\da.ico
+File=Themes\Icons\Flags\de.ico
+File=Themes\Icons\Flags\el.ico
+File=Themes\Icons\Flags\en.ico
+File=Themes\Icons\Flags\es.ico
+File=Themes\Icons\Flags\fr.ico
+File=Themes\Icons\Flags\hi.ico
+File=Themes\Icons\Flags\hr.ico
+File=Themes\Icons\Flags\id.ico
+File=Themes\Icons\Flags\is.ico
+File=Themes\Icons\Flags\it.ico
+File=Themes\Icons\Flags\iw.ico
+File=Themes\Icons\Flags\ja.ico
+File=Themes\Icons\Flags\ko.ico
+File=Themes\Icons\Flags\nl.ico
+File=Themes\Icons\Flags\no.ico
+File=Themes\Icons\Flags\pl.ico
+File=Themes\Icons\Flags\pt.ico
+File=Themes\Icons\Flags\ro.ico
+File=Themes\Icons\Flags\ru.ico
+File=Themes\Icons\Flags\sk.ico
+File=Themes\Icons\Flags\sv.ico
+File=Themes\Icons\Flags\th.ico
+File=Themes\Icons\Flags\tr.ico
+File=Themes\Icons\Flags\vi.ico
+File=Themes\Icons\Flags\zh-CN.ico
+File=Themes\Icons\logging\Complete.ico
+File=Themes\Icons\logging\Cross.ico
+File=Themes\Icons\logging\Exclamation.ico
+File=Themes\Icons\logging\Information.ico
+File=Themes\Icons\logging\Skull.ico
+File=Themes\Icons\logging\Smiley-Glass.ico
+File=Themes\Icons\logging\Snowman.ico
+File=Themes\Processing\32\Globe.ani
+File=Themes\Processing\64\Globe.ani
+File=UDF\Localization.au3
+
+[Links]
+GetMoreURL=https://goo.gl/Ua2ooa
+CompanyURL=https://www.rizonesoft.com
+ContactURL=https://www.rizonesoft.com/contact
+UpdateURL=https://goo.gl/rMmLm6
+
+[Environment]
+ScriptPath=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin.au3
+Company=Rizonesoft
+CompanyURL=https://www.rizonesoft.com
+Name=Firemin
+ShortName=Firemin
+Description=AutoIt Application Framework
+Type=N
+Icon=D:\Rizonesoft\SDK\Concrete\Firemin\Themes\Icons\Firemin.ico
+Version=6.0.0.4825
+VersionMajor=6
+VersionMaintenance=0
+VersionBuild=4825
+UseBeta=B
+UseX64=Y
+CompileBoth=Y
+OutFile=Firemin.exe
+OutFileX64=Firemin_X64.exe
+OutFilePath=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin.exe
+OutFileX64Path=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin_X64.exe
+InstallScriptPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4825\Firemin_4825_Setup.iss
+InstallOutputPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4825\Firemin_4825_Setup.exe
+InstallSize=2557308
+DistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4825
+DistributionName=Firemin_4825
+FullDistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4825\Firemin_4825
+DistroSourceName=Firemin_4825_Source
+DistroSourceFullPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4825\Firemin_4825_Source
