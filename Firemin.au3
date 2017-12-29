@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=AutoIt Application Framework      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.0.4826
+#AutoIt3Wrapper_Res_Fileversion=6.0.0.4836
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -189,7 +189,7 @@
 Opt("CaretCoordMode", 1)			;~ 1=absolute, 0=relative, 2=client
 Opt("ExpandEnvStrings", 1)			;~ 0=don't expand, 1=do expand
 Opt("ExpandVarStrings", 1)			;~ 0=don't expand, 1=do expand
-Opt("GUICloseOnESC", 0)				;~ 1=ESC  closes, 0=ESC won't close
+; Opt("GUICloseOnESC", 0)				;~ 1=ESC  closes, 0=ESC won't close
 Opt("GUICoordMode", 1)				;~ 1=absolute, 0=relative, 2=cell
 Opt("GUIDataSeparatorChar", "|")	;~ "|" is the default
 Opt("GUIOnEventMode", 1)			;~ 0=disabled, 1=OnEvent mode enabled
@@ -467,10 +467,7 @@ EndIf
 
 
 Func _SetHotKeys()
-
-	HotKeySet("{ESC}", "_CloseCoreGui")
 	HotKeySet("+!{F4}", "_ShutdownProgram")
-
 EndFunc
 
 
@@ -505,7 +502,7 @@ Func _StartCore()
 		_RunBrowser()
 	EndIf
 
-	AdlibUnRegister("_UptimeMonitor")
+	AdlibRegister("_UptimeMonitor", 1000)
 	AdlibRegister("_ReduceMemory", 300)
 	AdlibRegister("_ClearProcessesWorkingSet", $g_iBoostMill)
 
@@ -885,11 +882,6 @@ Func _LoadConfiguration()
 EndFunc   ;==>_LoadConfiguration
 
 
-Func _SaveConfiguration()
-	IniWrite($g_sPathIni, "Donate", "Seconds", $g_iUptimeMonitor)
-EndFunc
-
-
 Func _SaveFireminConfig()
 
 	If GUICtrlRead($g_hChkBrowserAutoStart) = $GUI_CHECKED Then
@@ -1086,12 +1078,12 @@ EndFunc   ;==>_SetProcessingStates
 
 Func _ShutdownProgram()
 
+	IniWrite($g_sPathIni, "Donate", "Seconds", $g_iUptimeMonitor)
+
 	; AdlibUnRegister("_ReduceMemory")
 	AdlibUnRegister("_OnIconsHover")
 	AdlibUnRegister("_UptimeMonitor")
 	AdlibUnRegister("_ClearProcessesWorkingSet")
-
-	_SaveConfiguration()
 
 	If $g_iUptimeMonitor > $g_iDonateTimeSet = True And _
 			$g_iDonateTime == 0 Then
