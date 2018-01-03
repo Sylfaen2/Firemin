@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=AutoIt Application Framework      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.0.4836
+#AutoIt3Wrapper_Res_Fileversion=6.0.0.4840
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -233,7 +233,6 @@ EndFunc   ;==>_ReBarStartUp
 
 #include "..\..\Includes\About.au3"
 #include "..\..\Includes\Donate.au3"
-#include "..\..\Includes\GUICtrlFFLabel.au3"
 #include "..\..\Includes\GuiMenuEx.au3"
 #include "..\..\Includes\ImageListEx.au3"
 #include "..\..\Includes\Link.au3"
@@ -604,10 +603,10 @@ Func _StartCoreGui()
 	GUICtrlSetCursor($g_hLblPrflPathExe, 0)
 	GUICtrlCreateLabel($g_aLangCustom[4] & Chr(32), 20, 235, 130, 18, $SS_RIGHT)
 	GUICtrlSetColor(-1, 0x555555)
-	$g_hLblProcessUsage = _GUICtrlFFLabel_Create($g_hCoreGui, "0 MB", 150, 235, 100, 18)
+	$g_hLblProcessUsage = GUICtrlCreateLabel("0 MB", 150, 235, 100, 18)
 	GUICtrlCreateLabel($g_aLangCustom[5]& Chr(32), 20, 253, 130, 18, $SS_RIGHT)
 	GUICtrlSetColor(-1, 0x555555)
-	$g_hLblProcessPeak = _GUICtrlFFLabel_Create($g_hCoreGui, "0 MB", 150, 253, 100, 18)
+	$g_hLblProcessPeak = GUICtrlCreateLabel("0 MB", 150, 253, 100, 18)
 	$g_hBtnPrflBrowse = GUICtrlCreateButton($g_aLangCustom[6], 320, 235, 110, 30)
 	GUICtrlSetState($g_hBtnPrflBrowse, $GUI_DEFBUTTON)
 	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
@@ -1203,26 +1202,26 @@ Func _GetCoreProcessUsage()
 	If ProcessExists($g_sCoreProcess) Then
 
 		$g_iCoreProcessUsage = _GetProcessUsage($g_sCoreProcess, 0)
-		_GUICtrlFFLabel_SetData($g_hLblProcessUsage, $g_iCoreProcessUsage & " MB")
+		GUICtrlSetData($g_hLblProcessUsage, $g_iCoreProcessUsage & " MB")
 
 		If $g_iBoostEnabled Then
 
 			If $g_iLimitEnabled Then
 				If $g_iCoreProcessUsage > $g_iCleanLimit Then
-					_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFFFF0000)
+					GUICtrlSetColor($g_hLblProcessUsage, 0xFF0000)
 				Else
-					_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+					GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 				EndIf
 			Else
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 			EndIf
 
 		Else
 
 			If $g_iCoreProcessUsage > 300 Then
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFFFF0000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0xFF0000)
 			Else
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 			EndIf
 
 		EndIf
@@ -1236,7 +1235,7 @@ Func _GetCoreProcessPeak()
 
 	If ProcessExists($g_sCoreProcess) Then
 		$g_iCoreProcessPeak =_GetProcessUsage($g_sCoreProcess, 1)
-		_GUICtrlFFLabel_SetData($g_hLblProcessPeak, $g_iCoreProcessPeak & " MB")
+		GUICtrlSetData($g_hLblProcessPeak, $g_iCoreProcessPeak & " MB")
 	Else
 		_ResetProcessUsage()
 	EndIf
@@ -1263,9 +1262,9 @@ EndFunc
 
 
 Func _ResetProcessUsage()
-	_GUICtrlFFLabel_SetData($g_hLblProcessUsage, "0 MB")
-	_GUICtrlFFLabel_SetData($g_hLblProcessPeak, "0 MB")
-	_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+	GUICtrlSetData($g_hLblProcessUsage, "0 MB")
+	GUICtrlSetData($g_hLblProcessPeak, "0 MB")
+	GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 EndFunc
 
 

@@ -1,13 +1,12 @@
 ==================================================
-%{:COMPANY:} %{:RELEASE:} CHANGES
+RIZONESOFT FIREMIN CHANGES
 ==================================================
 
 --------------------------------------------------
-Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
+Version 6.0.0.4838 (January 01, 2018)
 --------------------------------------------------
 
 - Added Russian and Greek languages.
-- Fix: Firemin 64bit now also updated.
 
 --------------------------------------------------
 Version 6.0.0.4833 (December 28, 2017)
