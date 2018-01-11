@@ -6,6 +6,16 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Fix: Extended Processes button now works.
+
+## Language Changes
+
+- Added Italian language
+
+--------------------------------------------------
+Version 6.0.0.4839 (January 01, 2018)
+--------------------------------------------------
+
 - Added Russian and Greek languages.
 - Fix: Firemin 64bit now also updated.
 

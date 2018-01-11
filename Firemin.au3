@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=AutoIt Application Framework      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.0.4840
+#AutoIt3Wrapper_Res_Fileversion=6.0.0.4851
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -658,7 +658,7 @@ Func _StartCoreGui()
 	GUICtrlSetOnEvent($g_hChkExtendedProcs, "_SetExtendedProcsEnabled")
 	GUICtrlSetOnEvent($g_hChkBrowserAutoStart, "_EnableSaveSettings")
 	GUICtrlSetOnEvent($g_hChkStartWindows, "_EnableSaveSettings")
-;~ 	GUICtrlSetOnEvent($g_BtnExtendedProcs, "_ExtendedProcessesDlg")
+	GUICtrlSetOnEvent($g_hBtnExtendedProcs, "_ShowPreferencesDlg")
 
 	GUICtrlSetOnEvent($g_hBtnCancel, "_CloseCoreGui")
 	GUICtrlSetOnEvent($g_hBtnSave, "_SaveFireminConfig")
