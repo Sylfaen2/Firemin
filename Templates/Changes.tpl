@@ -6,6 +6,13 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Fix: Inconsistent Resource strings (Executable Description).
+- Change: Only one instance of Firemin allowed.
+
+--------------------------------------------------
+Version 6.0.0.4850 (January 05, 2018)
+--------------------------------------------------
+
 - Fix: Extended Processes button now works.
 
 ## Language Changes

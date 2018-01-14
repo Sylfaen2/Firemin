@@ -29,8 +29,8 @@
 ; Target Program Resource info
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
-#AutoIt3Wrapper_Res_Description=AutoIt Application Framework      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.0.4851
+#AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
+#AutoIt3Wrapper_Res_Fileversion=6.0.1.4854
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -252,7 +252,7 @@ Global $g_sCompanyName			= "Rizonesoft"
 Global $g_sProgShortName		= "Firemin"
 Global $g_sProgShortName_X64	= $g_sProgShortName & "_X64"
 Global $g_sProgName				= "Firemin"
-Global $g_iSingleton			= False
+Global $g_iSingleton			= True
 
 ;~ Links
 Global $g_sUrlCompHomePage		= "https://goo.gl/m4Bhqe|www.rizonesoft.com"							; https://www.rizonesoft.com
