@@ -8,6 +8,8 @@ Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 
 - Fix: Inconsistent Resource strings (Executable Description).
 - Change: Only one instance of Firemin allowed.
+- Uncompressed (UPX) version to battle anti-virus false positives.
+- Fix: Italian language file (it.ini) now distributed.
 
 --------------------------------------------------
 Version 6.0.0.4850 (January 05, 2018)
