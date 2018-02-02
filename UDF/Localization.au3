@@ -72,6 +72,8 @@ Func _Localization_Custom()
 	$g_aLangCustom[21] = _Localization_Load("Custom", "Time_Unit_04", "hours")
 	$g_aLangCustom[22] = _Localization_Load("Custom", "Label_Boost_Description", "Reduce every %s %s if usage over %s MB.")
 	$g_aLangCustom[23] = _Localization_Load("Custom", "Title_Select_Browser", "Select Browser")
+	$g_aLangCustom[24] = _Localization_Load("Custom", "Tip_Minimized_Title", "%{Program.Name} is still running!")
+	$g_aLangCustom[25] = _Localization_Load("Custom", "Tip_Minimized_Message", "%{Program.Name} will continue to run to optimize %s's memory usage. Click the tray icon to change various optimization options.")
 
 EndFunc
 

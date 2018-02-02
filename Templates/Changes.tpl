@@ -6,6 +6,19 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Fix: Tray icon now removed on program exit.
+- New: Tray message informing the user about Firemin still running in the background.
+- New: Single-Click on tray icon, now opens main interface.
+
+## Language Changes
+
+- [Custom] Tip_Minimized_Title - Tray message title.
+- [Custom] Tip_Minimized_Message - Tray message body.
+
+--------------------------------------------------
+Version 6.0.1.4856 (January 21, 2018)
+--------------------------------------------------
+
 - Fix: Inconsistent Resource strings (Executable Description).
 - Change: Only one instance of Firemin allowed.
 - Uncompressed (UPX) version to battle anti-virus false positives.

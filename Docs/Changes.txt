@@ -3,7 +3,7 @@ RIZONESOFT FIREMIN CHANGES
 ==================================================
 
 --------------------------------------------------
-Version 6.0.1.4855 (January 16, 2018)
+Version 6.0.1.4856 (January 21, 2018)
 --------------------------------------------------
 
 - Fix: Inconsistent Resource strings (Executable Description).
