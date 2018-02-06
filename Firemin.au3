@@ -29,8 +29,8 @@
 ; Target Program Resource info
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
-#AutoIt3Wrapper_Res_Description=AutoIt Application Framework      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.0.4836
+#AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
+#AutoIt3Wrapper_Res_Fileversion=6.0.1.4890
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -226,14 +226,14 @@ EndFunc   ;==>_ReBarStartUp
 #include <GuiImageList.au3>
 #include <GuiListView.au3>
 #include <GuiStatusBar.au3>
+#include <TrayConstants.au3>
+#include <Misc.au3>
 #include <WinAPIProc.au3>
 #include <WinAPITheme.au3>
 #include <WindowsConstants.au3>
-#include <Misc.au3>
 
 #include "..\..\Includes\About.au3"
 #include "..\..\Includes\Donate.au3"
-#include "..\..\Includes\GUICtrlFFLabel.au3"
 #include "..\..\Includes\GuiMenuEx.au3"
 #include "..\..\Includes\ImageListEx.au3"
 #include "..\..\Includes\Link.au3"
@@ -253,7 +253,8 @@ Global $g_sCompanyName			= "Rizonesoft"
 Global $g_sProgShortName		= "Firemin"
 Global $g_sProgShortName_X64	= $g_sProgShortName & "_X64"
 Global $g_sProgName				= "Firemin"
-Global $g_iSingleton			= False
+Global $g_iSingleton			= True
+Global $g_iCoreGuiLoaded		= False
 
 ;~ Links
 Global $g_sUrlCompHomePage		= "https://goo.gl/m4Bhqe|www.rizonesoft.com"							; https://www.rizonesoft.com
@@ -388,6 +389,7 @@ Global $g_hBtnCancel
 Global $g_hTrItemAbout
 Global $g_hTrItemOpenCore
 Global $g_hTrItemExProcs
+Global $g_hTrItemOptimize
 Global $g_hTrItemBrsrRun
 Global $g_hTrItemBrsrRunSafe
 
@@ -480,10 +482,14 @@ Func _StartCore()
 	$g_hTrItemOpenCore = TrayCreateItem($g_aLangMenus[12])
 	$g_hTrItemExProcs = TrayCreateItem($g_aLangMenus[13])
 	TrayCreateItem("")
+	; $g_hTrItemOptimize = TrayCreateItem("Mozbase Optimizer")
+	; TrayCreateItem("")
 	$g_hTrItemBrsrRun = TrayCreateItem(StringFormat($g_aLangMenus[14], $g_sBrowserName))
 	$g_hTrItemBrsrRunSafe = TrayCreateItem(StringFormat($g_aLangMenus[15], $g_sBrowserName))
 	TrayCreateItem("")
 	$trmnuClose = TrayCreateItem($g_aLangMenus[2])
+
+	TraySetOnEvent($TRAY_EVENT_PRIMARYDOWN, "_StartCoreGui")
 
 	TrayItemSetState($g_hTrItemBrsrRunSafe, $GUI_DISABLE)
 	TrayItemSetState($g_hTrItemOpenCore, $TRAY_DEFAULT)
@@ -495,7 +501,7 @@ Func _StartCore()
 	TrayItemSetOnEvent($g_hTrItemBrsrRunSafe, "_RunBrowserSafe")
 	TrayItemSetOnEvent($trmnuClose, "_ShutdownProgram")
 
-	TraySetState()
+	TraySetState($TRAY_ICONSTATE_SHOW)
 	TraySetClick(8)
 
 	If $g_iStartBrowser Then
@@ -517,6 +523,7 @@ Func _StartCore()
 		_SoftwareUpdateCheck()
     EndIf
 
+	TraySetToolTip($g_sProgramTitle)
 	While 1
 		Sleep(55)
 	WEnd
@@ -526,11 +533,16 @@ EndFunc   ;==>_StartCoreGUI
 
 Func _StartCoreGui()
 
+	If $g_iCoreGuiLoaded = True Then
+		Return
+	EndIf
+
 	Local $miFileOptions, $miFileClose
 	Local $miHelpHome, $miHelpDownloads, $miHelpContact, $miHelpGitHub, $miHelpDonate, $miHelpAbout
 	Local $hHeading
 
 	TrayItemSetState($g_hTrItemOpenCore, $GUI_DISABLE)
+	$g_iCoreGuiLoaded = True
 
 	$g_hCoreGui = GUICreate($g_sProgramTitle, $g_iCoreGuiWidth, $g_iCoreGuiHeight, -1, 25)
 	If Not @Compiled Then GUISetIcon($g_aCoreIcons[0])
@@ -604,10 +616,10 @@ Func _StartCoreGui()
 	GUICtrlSetCursor($g_hLblPrflPathExe, 0)
 	GUICtrlCreateLabel($g_aLangCustom[4] & Chr(32), 20, 235, 130, 18, $SS_RIGHT)
 	GUICtrlSetColor(-1, 0x555555)
-	$g_hLblProcessUsage = _GUICtrlFFLabel_Create($g_hCoreGui, "0 MB", 150, 235, 100, 18)
+	$g_hLblProcessUsage = GUICtrlCreateLabel("0 MB", 150, 235, 100, 18)
 	GUICtrlCreateLabel($g_aLangCustom[5]& Chr(32), 20, 253, 130, 18, $SS_RIGHT)
 	GUICtrlSetColor(-1, 0x555555)
-	$g_hLblProcessPeak = _GUICtrlFFLabel_Create($g_hCoreGui, "0 MB", 150, 253, 100, 18)
+	$g_hLblProcessPeak = GUICtrlCreateLabel("0 MB", 150, 253, 100, 18)
 	$g_hBtnPrflBrowse = GUICtrlCreateButton($g_aLangCustom[6], 320, 235, 110, 30)
 	GUICtrlSetState($g_hBtnPrflBrowse, $GUI_DEFBUTTON)
 	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
@@ -659,7 +671,7 @@ Func _StartCoreGui()
 	GUICtrlSetOnEvent($g_hChkExtendedProcs, "_SetExtendedProcsEnabled")
 	GUICtrlSetOnEvent($g_hChkBrowserAutoStart, "_EnableSaveSettings")
 	GUICtrlSetOnEvent($g_hChkStartWindows, "_EnableSaveSettings")
-;~ 	GUICtrlSetOnEvent($g_BtnExtendedProcs, "_ExtendedProcessesDlg")
+	GUICtrlSetOnEvent($g_hBtnExtendedProcs, "_ShowPreferencesDlg")
 
 	GUICtrlSetOnEvent($g_hBtnCancel, "_CloseCoreGui")
 	GUICtrlSetOnEvent($g_hBtnSave, "_SaveFireminConfig")
@@ -683,6 +695,7 @@ EndFunc   ;==>_StartCoreGui
 Func _CloseCoreGui()
 
 	TrayItemSetState($g_hTrItemOpenCore, $TRAY_ENABLE)
+	$g_iCoreGuiLoaded = False
 
 	GUIDelete($g_hCoreGui)
 
@@ -691,6 +704,8 @@ Func _CloseCoreGui()
 
 	AdlibUnRegister("_OnIconsHover")
 	AdlibUnRegister("_GetCoreProcessPeak")
+
+	TrayTip($g_aLangCustom[24], StringFormat($g_aLangCustom[25], $g_sBrowserName), 20,  $TIP_ICONASTERISK)
 
 EndFunc
 
@@ -1095,10 +1110,14 @@ Func _ShutdownProgram()
 		_TerminateProgram()
 	EndIf
 
+
+
 EndFunc   ;==>_ShutdownProgram
 
 
 Func _TerminateProgram()
+
+	TraySetState($TRAY_ICONSTATE_HIDE)
 
 	If $g_iSingleton Then
 		Local $iPID = ProcessExists(@ScriptName)
@@ -1203,26 +1222,26 @@ Func _GetCoreProcessUsage()
 	If ProcessExists($g_sCoreProcess) Then
 
 		$g_iCoreProcessUsage = _GetProcessUsage($g_sCoreProcess, 0)
-		_GUICtrlFFLabel_SetData($g_hLblProcessUsage, $g_iCoreProcessUsage & " MB")
+		GUICtrlSetData($g_hLblProcessUsage, $g_iCoreProcessUsage & " MB")
 
 		If $g_iBoostEnabled Then
 
 			If $g_iLimitEnabled Then
 				If $g_iCoreProcessUsage > $g_iCleanLimit Then
-					_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFFFF0000)
+					GUICtrlSetColor($g_hLblProcessUsage, 0xFF0000)
 				Else
-					_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+					GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 				EndIf
 			Else
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 			EndIf
 
 		Else
 
 			If $g_iCoreProcessUsage > 300 Then
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFFFF0000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0xFF0000)
 			Else
-				_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+				GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 			EndIf
 
 		EndIf
@@ -1236,7 +1255,7 @@ Func _GetCoreProcessPeak()
 
 	If ProcessExists($g_sCoreProcess) Then
 		$g_iCoreProcessPeak =_GetProcessUsage($g_sCoreProcess, 1)
-		_GUICtrlFFLabel_SetData($g_hLblProcessPeak, $g_iCoreProcessPeak & " MB")
+		GUICtrlSetData($g_hLblProcessPeak, $g_iCoreProcessPeak & " MB")
 	Else
 		_ResetProcessUsage()
 	EndIf
@@ -1263,9 +1282,9 @@ EndFunc
 
 
 Func _ResetProcessUsage()
-	_GUICtrlFFLabel_SetData($g_hLblProcessUsage, "0 MB")
-	_GUICtrlFFLabel_SetData($g_hLblProcessPeak, "0 MB")
-	_GUICtrlFFLabel_SetTextColor($g_hLblProcessUsage, 0xFF000000)
+	GUICtrlSetData($g_hLblProcessUsage, "0 MB")
+	GUICtrlSetData($g_hLblProcessPeak, "0 MB")
+	GUICtrlSetColor($g_hLblProcessUsage, 0x000000)
 EndFunc
 
 

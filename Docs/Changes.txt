@@ -3,6 +3,32 @@ RIZONESOFT FIREMIN CHANGES
 ==================================================
 
 --------------------------------------------------
+Version 6.0.1.4856 (January 21, 2018)
+--------------------------------------------------
+
+- Fix: Inconsistent Resource strings (Executable Description).
+- Change: Only one instance of Firemin allowed.
+- Uncompressed (UPX) version to battle anti-virus false positives.
+- Fix: Italian language file (it.ini) now distributed.
+
+--------------------------------------------------
+Version 6.0.0.4850 (January 05, 2018)
+--------------------------------------------------
+
+- Fix: Extended Processes button now works.
+
+## Language Changes
+
+- Added Italian language
+
+--------------------------------------------------
+Version 6.0.0.4839 (January 01, 2018)
+--------------------------------------------------
+
+- Added Russian and Greek languages.
+- Fix: Firemin 64bit now also updated.
+
+--------------------------------------------------
 Version 6.0.0.4833 (December 28, 2017)
 --------------------------------------------------
 
