@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.1.4890
+#AutoIt3Wrapper_Res_Fileversion=6.0.1.4899
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -152,8 +152,8 @@
 ;===============================================================================================================
 ; Au3Stripper Settings
 ;===============================================================================================================
-#AutoIt3Wrapper_Run_Au3Stripper=N								;~ (Y/N) Run Au3Stripper before compilation. default=N
-;#Au3Stripper_Parameters=MergeOnly								;~ Au3Stripper parameters...see SciTE4AutoIt3 Helpfile for options
+#AutoIt3Wrapper_Run_Au3Stripper=Y								;~ (Y/N) Run Au3Stripper before compilation. default=N
+#Au3Stripper_Parameters=/MergeOnly								;~ Au3Stripper parameters...see SciTE4AutoIt3 Helpfile for options
 ;#Au3Stripper_Ignore_Variables=
 ;===============================================================================================================
 ; AU3Check settings
