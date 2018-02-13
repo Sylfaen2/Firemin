@@ -299,6 +299,8 @@ Global $g_iLimitEnabled		= 1
 Global $g_iStartBrowser		= 0
 Global $g_iExtProcsEnabled	= 1
 
+;~ Working Directories needs to be set before language is loaded.
+_SetWorkingDirectories()
 
 ;~ Language Settings
 Global $g_sLanguageDir		= $g_sRootDir & "\Language\" & $g_sProgShortName
@@ -456,7 +458,6 @@ Else
 		_Localization_Custom()		;~ Load Custom Language Strings
 		_Localization_About()		;~ Load About Language Strings
 		_SetResources()
-		_SetWorkingDirectories()
 		_LoadConfiguration()
 		_SetHotKeys()
 		_StartCore()
@@ -828,9 +829,7 @@ EndFunc   ;==>_SetResources
 #Region "Working Directories"
 
 Func _ResetWorkingDirectories()
-
 	$g_sPathIni = $g_sWorkingDir & "\" & $g_sProgShortName & ".ini"
-
 EndFunc   ;==>_ResetWorkingDirectories
 
 
@@ -866,6 +865,7 @@ Func _GenerateIniFile($iniPath, $bPortable = 1)
     ; MsgBox(0, "", $iniPath)
 	$iResult = IniWrite($iniPath, $g_sProgShortName, "PortableEdition", $bPortable)
 	Return $iResult
+
 EndFunc   ;==>_GenerateIniFile
 
 #EndRegion "Working Directories"
@@ -1103,8 +1103,6 @@ Func _ShutdownProgram()
 		WinSetTrans($g_hCoreGui, Default, 255)
 		_TerminateProgram()
 	EndIf
-
-
 
 EndFunc   ;==>_ShutdownProgram
 

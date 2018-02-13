@@ -6,6 +6,7 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Fix: Not able to select language with installed version.
 - Removed installer update check. (Could be the reason behind all the false malware detections)
 - Update files are now downloaded to the Windows Temp directory.
 - Removed the caching folder, including related functions. (Redundant)
