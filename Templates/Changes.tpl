@@ -6,6 +6,22 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Removed installer update check. (Could be the reason behind all the false malware detections)
+- Update files are now downloaded to the Windows Temp directory.
+- Removed the caching folder, including related functions. (Redundant)
+- UPX Compressed. (was not causing the false malware detections)
+
+## Language Changes
+
+- Added language name translations next to english name.
+- Added instructions (comments) to help with translating in language files.
+- Added Japanese Language.
+- Added French Language.
+
+--------------------------------------------------
+Version 6.0.1.4898 (February 06, 2018)
+--------------------------------------------------
+
 - Fix: Tray icon now removed on program exit.
 - New: Tray message informing the user about Firemin still running in the background.
 - New: Single-Click on tray icon, now opens main interface.

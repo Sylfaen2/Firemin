@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.0.1.4899
+#AutoIt3Wrapper_Res_Fileversion=6.1.0.4921
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -152,7 +152,7 @@
 ;===============================================================================================================
 ; Au3Stripper Settings
 ;===============================================================================================================
-#AutoIt3Wrapper_Run_Au3Stripper=Y								;~ (Y/N) Run Au3Stripper before compilation. default=N
+#AutoIt3Wrapper_Run_Au3Stripper=N								;~ (Y/N) Run Au3Stripper before compilation. default=N
 #Au3Stripper_Parameters=/MergeOnly								;~ Au3Stripper parameters...see SciTE4AutoIt3 Helpfile for options
 ;#Au3Stripper_Ignore_Variables=
 ;===============================================================================================================
@@ -243,6 +243,8 @@ EndFunc   ;==>_ReBarStartUp
 
 #include "UDF\Localization.au3"
 
+;~ Developer Constants
+Global Const $DEBUG_UPDATE		= False
 
 ;~ Constants
 Global Const $CNT_MENUICONS		= 8
@@ -257,18 +259,18 @@ Global $g_iSingleton			= True
 Global $g_iCoreGuiLoaded		= False
 
 ;~ Links
-Global $g_sUrlCompHomePage		= "https://goo.gl/m4Bhqe|www.rizonesoft.com"							; https://www.rizonesoft.com
-Global $g_sUrlContact			= "https://goo.gl/X1kR2a|www.rizonesoft.com/contact"					; https://www.rizonesoft.com/contact
-Global $g_sUrlDownloads			= "https://goo.gl/BWhZ4G|www.rizonesoft.com/downloads"					; https://www.rizonesoft.com/downloads/
-Global $g_sUrlFacebook			= "https://goo.gl/o1wRdC|Facebook.com/rizonesoft"						; https://www.facebook.com/rizonesoft
-Global $g_sUrlTwitter			= "https://goo.gl/Rcc5Wz|Twitter.com/Rizonesoft"						; https://twitter.com/Rizonesoft
-Global $g_sUrlGooglePlus		= "https://goo.gl/oNirJT|Plus.google.com/+Rizonesoftsa" 				; https://plus.google.com/+Rizonesoftsa/posts
-Global $g_sUrlRSS				= "https://goo.gl/s1kUi4|www.rizonesoft.com/feed"						; https://www.rizonesoft.com/feed
-Global $g_sUrlPayPal			= "https://goo.gl/WkkaUm|PayPal.me/rizonesoft"							; https://www.paypal.me/rizonesoft
-Global $g_sUrlGitHub			= "https://goo.gl/rj1M7a|GitHub.com/rizonesoft/Firemin"					; https://github.com/rizonesoft/SDK
-Global $g_sUrlGitHubIssues		= "https://goo.gl/6tkoh8|GitHub.com/rizonesoft/Firemin/issues"			; https://github.com/rizonesoft/SDK/issues
-Global $g_sUrlSA				= "https://goo.gl/Fn6UKQ|Wikipedia.org/wiki/South_Africa"				; https://en.wikipedia.org/wiki/South_Africa
-Global $g_sUrlProgPage			= "https://goo.gl/EL99cQ|www.rizonesoft.com/downloads/firemin/"			; https://www.rizonesoft.com/downloads/firemin/
+Global $g_sUrlCompHomePage		= "https://rizone.tech/2Eoo9O1|www.rizonesoft.com"							; https://www.rizonesoft.com
+Global $g_sUrlContact			= "https://rizone.tech/2EhlYHF|www.rizonesoft.com/contact"					; https://www.rizonesoft.com/contact
+Global $g_sUrlDownloads			= "https://rizone.tech/2EWMZRO|www.rizonesoft.com/downloads"				; https://www.rizonesoft.com/downloads/
+Global $g_sUrlFacebook			= "https://rizone.tech/2nZTR92|Facebook.com/rizonesoft"						; https://www.facebook.com/rizonesoft
+Global $g_sUrlTwitter			= "https://rizone.tech/2EZE7ej|Twitter.com/Rizonesoft"						; https://twitter.com/Rizonesoft
+Global $g_sUrlGooglePlus		= "https://rizone.tech/2BqYKR1|Plus.google.com/+Rizonesoftsa" 				; https://plus.google.com/+Rizonesoftsa/posts
+Global $g_sUrlRSS				= "https://rizone.tech/2nY4SIP|www.rizonesoft.com/feed"						; https://www.rizonesoft.com/feed
+Global $g_sUrlPayPal			= "https://rizone.tech/2G8CL0g|PayPal.me/rizonesoft"						; https://www.paypal.me/rizonesoft
+Global $g_sUrlGitHub			= "https://rizone.tech/2F17gpt|GitHub.com/rizonesoft/Firemin"				; https://github.com/rizonesoft/Firemin
+Global $g_sUrlGitHubIssues		= "https://rizone.tech/2Eol5Bk|GitHub.com/rizonesoft/Firemin/issues"		; https://github.com/rizonesoft/Firemin/issues
+Global $g_sUrlSA				= "https://rizone.tech/2Brk7lf|Wikipedia.org/wiki/South_Africa"				; https://en.wikipedia.org/wiki/South_Africa
+Global $g_sUrlProgPage			= "https://rizone.tech/2BXBZVJ|www.rizonesoft.com/downloads/firemin/"		; https://www.rizonesoft.com/downloads/firemin/
 
 
 ;~ Path Settings
@@ -284,7 +286,6 @@ Global $g_sDocLicense		= $g_sDocsDir & "\License.txt"
 Global $g_sDocReadme		= $g_sDocsDir & "\Readme.txt"
 
 ; Configuration Settings
-Global $g_iClearCacheOnExit = 0
 Global $g_iBoostMill		= 500
 Global $g_iCleanLimit		= 5
 Global $g_sBrowserName
@@ -322,17 +323,17 @@ Global $g_GuiLogBoxHeight	= 150
 Global $g_iLogIconStart		= -202
 Global $g_iUpdateSubStatus	= True
 
-;~ Cache Settings
-Global $g_sCacheRoot		= $g_sWorkingDir & "\Cache\" & $g_sProgShortName
-Global $g_iEnableCache		= 1
-
 ;~ Splash Page Settings
 Global $g_SplashAnimation 	= $g_sThemesDir & "\Processing\32\Stroke.ani"
 Global $g_iSplashDelay		= 100
 
 ;~ Update Notification Settings
 Global $g_sUpdateAnimation	= $g_sThemesDir & "\Processing\" & $g_iSizeIcon & "\Globe.ani"
-Global $g_sRemoteUpdateFile	= "https://www.rizonesoft.com/update/" & $g_sProgShortName & ".ru"
+If $DEBUG_UPDATE = True Then
+	Global $g_sRemoteUpdateFile	= "https://www.rizonesoft.com/update/" & $g_sProgShortName & ".ruz"
+Else
+	Global $g_sRemoteUpdateFile	= "https://www.rizonesoft.com/update/" & $g_sProgShortName & ".ru"
+EndIf
 Global $g_iCheckForUpdates	= 4
 
 ;~ Donate Time
@@ -399,9 +400,6 @@ If Not IsDeclared("g_iParent") Then Global $g_iParent
 Global $g_hOptionsGui
 Global $g_hOEditExtProcs
 Global $g_hOEditExtProcsTemp 		= ""
-Global $g_hOChkClearCacheOnExit
-Global $g_hOLblCacheSize
-Global $g_hOBtnClearCache
 Global $g_hOListLanguage
 Global $g_hOImgLanguage
 Global $g_hOIconLanguage
@@ -832,8 +830,6 @@ EndFunc   ;==>_SetResources
 Func _ResetWorkingDirectories()
 
 	$g_sPathIni = $g_sWorkingDir & "\" & $g_sProgShortName & ".ini"
-	$g_sCacheRoot = $g_sWorkingDir & "\Cache\" & $g_sProgShortName
-	If $g_iEnableCache == 1 Then DirCreate($g_sCacheRoot)
 
 EndFunc   ;==>_ResetWorkingDirectories
 
@@ -880,7 +876,6 @@ EndFunc   ;==>_GenerateIniFile
 Func _LoadConfiguration()
 
 	$g_iCheckForUpdates = Int(IniRead($g_sPathIni, $g_sProgShortName, "CheckForUpdates", 4))
-	$g_iClearCacheOnExit = Int(IniRead($g_sPathIni, $g_sProgShortName, "ClearCacheOnExit", 0))
 	$g_iUptimeMonitor = Int(IniRead($g_sPathIni, "Donate", "Seconds", 0))
 	$g_iDonateTime = Int(IniRead($g_sPathIni, "Donate", "DonateTime", 0))
 	$g_sBrowserPath = IniRead($g_sPathIni, $g_sProgShortName, "BrowserPath", @ProgramFilesDir & "\Mozilla Firefox\firefox.exe")
@@ -1105,7 +1100,6 @@ Func _ShutdownProgram()
 		IniWrite($g_sPathIni, "Donate", "DonateTime", $g_iUptimeMonitor)
 		_Donate_ShowDialog()
 	Else
-		If $g_iClearCacheOnExit == 1 Then DirRemove($g_sCacheRoot, 1)
 		WinSetTrans($g_hCoreGui, Default, 255)
 		_TerminateProgram()
 	EndIf
@@ -1360,9 +1354,9 @@ Func _ShowPreferencesDlg()
 
 	GUICtrlCreateTab(10, 10, 430, 430)
 	GUICtrlCreateTabItem(StringFormat(" %s ", $g_aLangPreferences[1]))
-	GUICtrlCreateGroup($g_aLangPreferences[4], 25, 50, 400, 350)
+	GUICtrlCreateGroup($g_aLangPreferences[3], 25, 50, 400, 350)
 	GUICtrlSetFont(-1, 10, 700, 2)
-	GUICtrlCreateLabel($g_aLangPreferences[7], 45, 80, 365, 80)
+	GUICtrlCreateLabel($g_aLangPreferences[5], 45, 80, 365, 80)
 	GUICtrlSetColor(-1, 0x555555)
 	GUICtrlSetFont(-1, 9)
 	$g_hOEditExtProcs = GUICtrlCreateEdit("", 45, 160, 365, 150, $WS_VSCROLL + $ES_AUTOVSCROLL)
@@ -1376,21 +1370,7 @@ Func _ShowPreferencesDlg()
 	GUICtrlCreateTabItem("") ; end tabitem definition
 
 	GUICtrlCreateTabItem(StringFormat(" %s ", $g_aLangPreferences[2]))
-	GUICtrlCreateGroup($g_aLangPreferences[4], 25, 50, 400, 100)
-	GUICtrlSetFont(-1, 10, 700, 2)
-	$g_hOChkClearCacheOnExit = GUICtrlCreateCheckbox($g_aLangPreferences[8], 35, 80, 300, 20)
-	GUICtrlSetState($g_hOChkClearCacheOnExit, $g_iClearCacheOnExit)
-	$g_hOLblCacheSize = GUICtrlCreateLabel(StringFormat($g_aLangPreferences[9], Round(DirGetSize($g_sCacheRoot) / 1024, 2)), 35, 115, 200, 20)
-	GUICtrlSetColor($g_hOLblCacheSize, 0x555555)
-	$g_hOBtnClearCache = GUICtrlCreateButton($g_aLangPreferences[10], 255, 105, 150, 30)
-	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
-
-	GUICtrlSetOnEvent($g_hOChkClearCacheOnExit, "__CheckPreferenceChange")
-	GUICtrlSetOnEvent($g_hOBtnClearCache, "__ClearCacheFolder")
-	GUICtrlCreateTabItem("") ; end tabitem definition
-
-	GUICtrlCreateTabItem(StringFormat(" %s ", $g_aLangPreferences[3]))
-	GUICtrlCreateGroup($g_aLangPreferences[6], 25, 50, 400, 350)
+	GUICtrlCreateGroup($g_aLangPreferences[4], 25, 50, 400, 350)
 	GUICtrlSetFont(-1, 10, 700, 2)
 
 	Local $aSelLangInfo = __ISO639CodeToIndex($g_sSelectedLanguage)
@@ -1442,22 +1422,22 @@ Func _ShowPreferencesDlg()
 	Local $iSelLangItem = __FindLanguageItem(3300 + $aSelLangInfo[1])
 	_GUICtrlListView_SetItemSelected($g_hOListLanguage, $iSelLangItem, True, True)
 	_GUICtrlListView_EnsureVisible($g_hOListLanguage, $iSelLangItem)
-	GUICtrlCreateLabel(StringFormat($g_aLangPreferences[14], $g_aLangPreferences[15]), 40, 350, 365, 35)
+	GUICtrlCreateLabel(StringFormat($g_aLangPreferences[6], $g_aLangPreferences[7]), 40, 350, 365, 35)
 	GUICtrlSetColor(-1, 0x555555)
 	GUICtrlSetFont(-1, 9)
 	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
 	GUICtrlCreateTabItem("") ; end tabitem definition
 
-	$g_hOLblPrefsUpdated = GUICtrlCreateLabel($g_aLangPreferences[17], 25, 455, 200, 20)
+	$g_hOLblPrefsUpdated = GUICtrlCreateLabel($g_aLangPreferences[9], 25, 455, 200, 20)
 	GUICtrlSetColor($g_hOLblPrefsUpdated, 0x008000)
 	GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_HIDE)
-	$g_hOBtnSave = GUICtrlCreateButton($g_aLangPreferences[15], 210, 450, 100, 30)
+	$g_hOBtnSave = GUICtrlCreateButton($g_aLangPreferences[7], 210, 450, 100, 30)
 	GUICtrlSetFont($g_hOBtnSave, 10)
 	GUICtrlSetState($g_hOBtnSave, $GUI_FOCUS)
 	GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
 	GUICtrlSetOnEvent($g_hOBtnSave, "__SavePreferences")
 
-	$g_hOBtnCancel = GUICtrlCreateButton($g_aLangPreferences[16], 320, 450, 100, 30)
+	$g_hOBtnCancel = GUICtrlCreateButton($g_aLangPreferences[8], 320, 450, 100, 30)
 	GUICtrlSetFont($g_hOBtnCancel, 10)
 	GUICtrlSetOnEvent($g_hOBtnCancel, "__CloseOptionsDlg")
 
@@ -1475,33 +1455,6 @@ Func __CheckExtendedProcsChange()
 		GUICtrlSetState($g_hOBtnSave, $GUI_ENABLE)
 		$g_hOEditExtProcsTemp = $sEPTemp
 	EndIf
-
-EndFunc
-
-
-Func __ClearCacheFolder()
-
-	GUICtrlSetState($g_hOBtnClearCache, $GUI_DISABLE)
-	DirRemove($g_sCacheRoot, 1)
-	DirCreate($g_sCacheRoot)
-
-	GUICtrlSetData($g_hOLblCacheSize, StringFormat($g_aLangPreferences[9], Round(DirGetSize($g_sCacheRoot) / 1024, 2)))
-	GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[18])
-	GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_SHOW)
-	GUICtrlSetState($g_hOBtnClearCache, $GUI_ENABLE)
-
-EndFunc
-
-
-Func __CheckPreferenceChange()
-
-	If __CheckBoxChanged("ClearCacheOnExit", $g_hOChkClearCacheOnExit) = True Then
-		GUICtrlSetState($g_hOBtnSave, $GUI_ENABLE)
-	Else
-		GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
-	EndIf
-
-	GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_HIDE)
 
 EndFunc
 
@@ -1533,11 +1486,11 @@ Func __SavePreferences()
 	EndIf
 
 	If $g_tSelectedLanguage <> $g_sSelectedLanguage Then
-		Local $iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[20], $g_aLangPreferences[21], 0, $g_hOptionsGui)
+		Local $iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[11], $g_aLangPreferences[12], 0, $g_hOptionsGui)
 		Switch $iMsgBoxResult
 			Case 1
 				IniWrite($g_sPathIni, $g_sProgShortName, "Language", $g_tSelectedLanguage)
-				GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[20])
+				GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[11])
 				GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_SHOW)
 				GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
 				$iLangChanged = True
@@ -1547,16 +1500,8 @@ Func __SavePreferences()
 		EndSwitch
 	EndIf
 
-	If GUICtrlRead($g_hOChkClearCacheOnExit) = $GUI_CHECKED Then
-		$g_iClearCacheOnExit = 1
-	ElseIf GUICtrlRead($g_hOChkClearCacheOnExit) = $GUI_UNCHECKED Then
-		$g_iClearCacheOnExit = 0
-	EndIf
-
-	IniWrite($g_sPathIni, $g_sProgShortName, "ClearCacheOnExit", $g_iClearCacheOnExit)
-
 	If $iLangChanged = True Then
-		$iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[22], $g_aLangPreferences[23], 0, $g_hOptionsGui)
+		$iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[13], $g_aLangPreferences[14], 0, $g_hOptionsGui)
 		Switch $iMsgBoxResult
 			Case 1
 				_ShutdownProgram()
@@ -1564,7 +1509,7 @@ Func __SavePreferences()
 				$iLangChanged = False
 		EndSwitch
 	Else
-		GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[19])
+		GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[10])
 		GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_SHOW)
 		GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
 	EndIf

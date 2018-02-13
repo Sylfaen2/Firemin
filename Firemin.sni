@@ -23,15 +23,17 @@ Website = https://www.rizonesoft.com
 [Distribute]
 File=Firemin.exe
 File=Firemin_X64.exe
-File=Firemin.ini
+File=~Firemin.ini
 File=Docs\Changes.txt
 File=Docs\License.txt
 File=Docs\Readme.txt
+File=Language\Firemin\el.ini
 File=Language\Firemin\en.ini
+File=Language\Firemin\fr.ini
 File=Language\Firemin\it.ini
+File=Language\Firemin\ja.ini
 File=Language\Firemin\pl.ini
 File=Language\Firemin\ru.ini
-File=Language\Firemin\el.ini
 File=Themes\Processing\32\Stroke.ani
 File=Themes\Processing\64\Globe.ani
 
@@ -106,10 +108,10 @@ File=Themes\Processing\64\Globe.ani
 File=UDF\Localization.au3
 
 [Links]
-GetMoreURL=https://goo.gl/Ua2ooa
+GetMoreURL=https://rizone.tech/2EWMZRO
 CompanyURL=https://www.rizonesoft.com
 ContactURL=https://www.rizonesoft.com/contact
-UpdateURL=https://goo.gl/rMmLm6
+UpdateURL=https://rizone.tech/2EWGiPH
 
 [Environment]
 ScriptPath=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin.au3
@@ -120,10 +122,10 @@ ShortName=Firemin
 Description=Firemin
 Type=N
 Icon=D:\Rizonesoft\SDK\Concrete\Firemin\Themes\Icons\Firemin.ico
-Version=6.0.1.4898
+Version=6.1.0.4920
 VersionMajor=6
-VersionMaintenance=1
-VersionBuild=4898
+VersionMaintenance=0
+VersionBuild=4920
 UseBeta=B
 UseX64=Y
 CompileBoth=Y
@@ -131,11 +133,11 @@ OutFile=Firemin.exe
 OutFileX64=Firemin_X64.exe
 OutFilePath=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin.exe
 OutFileX64Path=D:\Rizonesoft\SDK\Concrete\Firemin\Firemin_X64.exe
-InstallScriptPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4898\Firemin_4898_Setup.iss
-InstallOutputPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4898\Firemin_4898_Setup.exe
-InstallSize=2596457
-DistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4898
-DistributionName=Firemin_4898
-FullDistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4898\Firemin_4898
-DistroSourceName=Firemin_4898_Source
-DistroSourceFullPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4898\Firemin_4898_Source
+InstallScriptPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4920\Firemin_4920_Setup.iss
+InstallOutputPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4920\Firemin_4920_Setup.exe
+InstallSize=2627769
+DistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4920
+DistributionName=Firemin_4920
+FullDistributionPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4920\Firemin_4920
+DistroSourceName=Firemin_4920_Source
+DistroSourceFullPath=D:\Rizonesoft\SDK\Concrete\Firemin\Distribution\4920\Firemin_4920_Source
