@@ -6,6 +6,21 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Firemin still running tray notice now only shown on first run.
+- Unnecessary code cleanup.
+
+## Language Changes
+
+- Fix: Language distribution to ensure language files are distributed.
+- Added German language file.
+- Added support for Hungarian language.
+- Added support for Slovenian language.
+- Added Slovenian language file.
+
+--------------------------------------------------
+Version 6.1.0.4920 (February 13, 2018)
+--------------------------------------------------
+
 - Fix: Not able to select language with installed version.
 - Removed installer update check. (Could be the reason behind all the false malware detections)
 - Update files are now downloaded to the Windows Temp directory.

@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.1.0.4921
+#AutoIt3Wrapper_Res_Fileversion=6.1.0.4934
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -115,33 +115,35 @@
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\fr.ico					; 237
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\hi.ico					; 238
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\hr.ico					; 239
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\id.ico					; 240
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\is.ico					; 241
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\it.ico					; 242
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\iw.ico					; 243
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ja.ico					; 244
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ko.ico					; 245
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\nl.ico					; 246
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\no.ico					; 247
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\pl.ico					; 248
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\pt.ico					; 249
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ro.ico					; 250
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ru.ico					; 251
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sk.ico					; 252
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sv.ico					; 253
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\th.ico					; 254
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\tr.ico					; 255
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\vi.ico					; 256
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\zh-CN.ico				; 257
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\hu.ico					; 240
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\id.ico					; 241
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\is.ico					; 242
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\it.ico					; 243
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\iw.ico					; 244
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ja.ico					; 245
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ko.ico					; 246
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\nl.ico					; 247
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\no.ico					; 248
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\pl.ico					; 249
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\pt.ico					; 250
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ro.ico					; 251
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ru.ico					; 252
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\si.ico					; 253
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sk.ico					; 254
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sv.ico					; 255
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\th.ico					; 256
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\tr.ico					; 257
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\vi.ico					; 258
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\zh-CN.ico				; 259
 
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Gear.ico				; 258
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Logbook.ico				; 259
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Close.ico				; 260
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Update.ico				; 261
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Home.ico				; 262
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Mail.ico				; 263
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\GitHub.ico				; 264
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\About.ico				; 265
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Gear.ico				; 260
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Logbook.ico				; 261
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Close.ico				; 262
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Update.ico				; 263
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Home.ico				; 264
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\Mail.ico				; 265
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\GitHub.ico				; 266
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Menus\About.ico				; 267
 
 ;===============================================================================================================
 ; Tidy Settings
@@ -312,7 +314,7 @@ Global $g_sLanguageFile		= $g_sLanguageDir & "\" & $g_sSelectedLanguage & ".ini"
 Global $g_iUpdateIconStart				= 209
 Global $g_iDialogIconStart				= 211
 Global $g_iAboutIconStart				= 216
-Global $g_iMenuIconsStart				= 258
+Global $g_iMenuIconsStart				= 260
 Global $g_iLangIconStart				= 228
 Global $g_aCoreIcons[3]
 Global $g_iSizeIcon						= 64
@@ -321,9 +323,7 @@ Global $g_aMenuIcons[$CNT_MENUICONS]
 Global $g_sDlgOptionsIcon
 
 ;~ Logging Settings
-Global $g_GuiLogBoxHeight	= 150
-Global $g_iLogIconStart		= -202
-Global $g_iUpdateSubStatus	= True
+Global $g_iFirstRun			= 0
 
 ;~ Splash Page Settings
 Global $g_SplashAnimation 	= $g_sThemesDir & "\Processing\32\Stroke.ani"
@@ -513,8 +513,8 @@ Func _StartCore()
 
 	_SetTrayItemStates()
 
-	If Int(IniRead($g_sPathIni, $g_sProgShortName, "FirstRun", 1)) = 1 Then
-		IniWrite($g_sPathIni, $g_sProgShortName, "FirstRun", 0)
+	If $g_iFirstRun = 1 Then
+
 		_StartCoreGui()
 	EndIf
 
@@ -704,7 +704,9 @@ Func _CloseCoreGui()
 	AdlibUnRegister("_OnIconsHover")
 	AdlibUnRegister("_GetCoreProcessPeak")
 
-	TrayTip($g_aLangCustom[24], StringFormat($g_aLangCustom[25], $g_sBrowserName), 20,  $TIP_ICONASTERISK)
+	If $g_iFirstRun = 1 Then
+		TrayTip($g_aLangCustom[24], StringFormat($g_aLangCustom[25], $g_sBrowserName), 20,  $TIP_ICONASTERISK)
+	EndIf
 
 EndFunc
 
@@ -886,6 +888,7 @@ Func _LoadConfiguration()
 	$g_iStartBrowser = Int(IniRead($g_sPathIni, $g_sProgShortName, "StartBrowser", 0))
 	$g_iExtProcsEnabled = Int(IniRead($g_sPathIni, $g_sProgShortName, "EnableExtendedProcs", 1))
 	$g_sExtendedProcs = IniRead($g_sPathIni, $g_sProgShortName, "ExtendedProcs", "plugin-container.exe")
+	$g_iFirstRun = Int(IniRead($g_sPathIni, $g_sProgShortName, "FirstRun", 1))
 
 	_LoadBrowser($g_sBrowserPath)
 
@@ -1089,6 +1092,9 @@ EndFunc   ;==>_SetProcessingStates
 Func _ShutdownProgram()
 
 	IniWrite($g_sPathIni, "Donate", "Seconds", $g_iUptimeMonitor)
+	If $g_iFirstRun = 1 Then
+		IniWrite($g_sPathIni, $g_sProgShortName, "FirstRun", 0)
+	EndIf
 
 	; AdlibUnRegister("_ReduceMemory")
 	AdlibUnRegister("_OnIconsHover")
@@ -1382,7 +1388,7 @@ Func _ShowPreferencesDlg()
 			$WS_EX_CLIENTEDGE, $LVS_EX_FLATSB, $LVS_EX_INFOTIP))
 
 	$g_hOImgLanguage = _GUIImageList_Create(16, 16, 5, 3)
-	For $l = 0 To 29
+	For $l = 0 To 31
 		_GUIImageList_AddIcon($g_hOImgLanguage, @ScriptFullPath, 0 - $g_iLangIconStart - $l)
 	Next
 	_GUICtrlListView_SetImageList($g_hOListLanguage, $g_hOImgLanguage, 1)
@@ -1587,60 +1593,66 @@ Func __ISO639CodeToIndex($i639 = "en")
 		Case "hr"
 			$aLangInfo[0] = "Croatian"
 			$aLangInfo[1] = 11
+		Case "hu"
+			$aLangInfo[0] = "Hungarian"
+			$aLangInfo[1] = 12
 		Case "id"
 			$aLangInfo[0] = "Indonesian"
-			$aLangInfo[1] = 12
+			$aLangInfo[1] = 13
 		Case "is"
 			$aLangInfo[0] = "Icelandic"
-			$aLangInfo[1] = 13
+			$aLangInfo[1] = 14
 		Case "it"
 			$aLangInfo[0] = "Italian"
-			$aLangInfo[1] = 14
+			$aLangInfo[1] = 15
 		Case "iw"
 			$aLangInfo[0] = "Hebrew"
-			$aLangInfo[1] = 15
+			$aLangInfo[1] = 16
 		Case "ja"
 			$aLangInfo[0] = "Japanese"
-			$aLangInfo[1] = 16
+			$aLangInfo[1] = 17
 		Case "ko"
 			$aLangInfo[0] = "Korean"
-			$aLangInfo[1] = 17
+			$aLangInfo[1] = 18
 		Case "nl"
 			$aLangInfo[0] = "Dutch"
-			$aLangInfo[1] = 18
+			$aLangInfo[1] = 19
 		Case "no"
 			$aLangInfo[0] = "Norwegian"
-			$aLangInfo[1] = 19
+			$aLangInfo[1] = 20
 		Case "pl"
 			$aLangInfo[0] = "Polish"
-			$aLangInfo[1] = 20
+			$aLangInfo[1] = 21
 		Case "pt"
 			$aLangInfo[0] = "Portuguese"
-			$aLangInfo[1] = 21
+			$aLangInfo[1] = 22
 		Case "ro"
 			$aLangInfo[0] = "Romanian"
-			$aLangInfo[1] = 22
+			$aLangInfo[1] = 23
 		Case "ru"
 			$aLangInfo[0] = "Russian"
-			$aLangInfo[1] = 23
+			$aLangInfo[1] = 24
+		Case "si"
+			$aLangInfo[0] = "Slovenian"
+			$aLangInfo[1] = 25
 		Case "sk"
 			$aLangInfo[0] = "Slovak"
-			$aLangInfo[1] = 24
+			$aLangInfo[1] = 26
 		Case "sv"
 			$aLangInfo[0] = "Swedish"
-			$aLangInfo[1] = 25
+			$aLangInfo[1] = 27
 		Case "th"
 			$aLangInfo[0] = "Thai"
-			$aLangInfo[1] = 26
+			$aLangInfo[1] = 28
 		Case "tr"
 			$aLangInfo[0] = "Turkish"
-			$aLangInfo[1] = 27
+			$aLangInfo[1] = 29
 		Case "vi"
 			$aLangInfo[0] = "Vietnamese"
-			$aLangInfo[1] = 28
+			$aLangInfo[1] = 30
 		Case "zh-CN"
 			$aLangInfo[0] = "Chinese"
-			$aLangInfo[1] = 29
+			$aLangInfo[1] = 31
 	EndSwitch
 
 	Return $aLangInfo

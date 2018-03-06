@@ -3,10 +3,10 @@ FIREMIN
 © Rizonesoft. All rights reserved
 https://www.rizonesoft.com
 ==================================================
-Version: 6.1.0.4920
-Release Date: 13 2018, 2018
+Version: 6.1.0.4933
+Release Date: 06 2018, 2018
 System Requirements: Windows XP, Vista, 2008, 7, 8, 8.1, 10 
-Disk Space: 3 MB
+Disk Space: 4 MB
 ==================================================
 
 Description

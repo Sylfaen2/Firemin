@@ -3,6 +3,21 @@ RIZONESOFT FIREMIN CHANGES
 ==================================================
 
 --------------------------------------------------
+Version 6.1.0.4933 (March 06, 2018)
+--------------------------------------------------
+
+- Firemin still running tray notice now only shown on first run.
+- Unnecessary code cleanup.
+
+## Language Changes
+
+- Fix: Language distribution to ensure language files are distributed.
+- Added German language file.
+- Added support for Hungarian language.
+- Added support for Slovenian language.
+- Added Slovenian language file.
+
+--------------------------------------------------
 Version 6.1.0.4920 (February 13, 2018)
 --------------------------------------------------
 
