@@ -30,7 +30,7 @@
 ;===============================================================================================================
 #AutoIt3Wrapper_Res_Comment=Firemin									;~ Comment field
 #AutoIt3Wrapper_Res_Description=Firemin						      	;~ Description field
-#AutoIt3Wrapper_Res_Fileversion=6.1.0.4934
+#AutoIt3Wrapper_Res_Fileversion=6.1.0.4964
 #AutoIt3Wrapper_Res_FileVersion_AutoIncrement=Y  					;~ (Y/N/P) AutoIncrement FileVersion. Default=N
 #AutoIt3Wrapper_Res_FileVersion_First_Increment=N					;~ (Y/N) AutoIncrement Y=Before; N=After compile. Default=N
 #AutoIt3Wrapper_Res_HiDpi=N                      					;~ (Y/N) Compile for high DPI. Default=N
@@ -128,7 +128,7 @@
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\pt.ico					; 250
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ro.ico					; 251
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\ru.ico					; 252
-#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\si.ico					; 253
+#AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sl.ico					; 253
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sk.ico					; 254
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\sv.ico					; 255
 #AutoIt3Wrapper_Res_Icon_Add=Themes\Icons\Flags\th.ico					; 256
@@ -288,18 +288,19 @@ Global $g_sDocLicense		= $g_sDocsDir & "\License.txt"
 Global $g_sDocReadme		= $g_sDocsDir & "\Readme.txt"
 
 ; Configuration Settings
-Global $g_iBoostMill		= 500
-Global $g_iCleanLimit		= 5
+Global $g_iBoostMill		 = 500
+Global $g_iCleanLimit		 = 5
 Global $g_sBrowserName
-Global $g_sBrowserPath		= @ProgramFilesDir & "\Mozilla Firefox\firefox.exe"
-Global $g_sExtendedProcs	= "plugin-container.exe"
+Global $g_sBrowserPath		 = @ProgramFilesDir & "\Mozilla Firefox\firefox.exe"
+Global $g_sExtendedProcs	 = "plugin-container.exe"
 Global $g_sCoreProcess
-Global $g_iCoreProcessUsage	= 0
-Global $g_iCoreProcessPeak	= 0
-Global $g_iBoostEnabled		= 1
-Global $g_iLimitEnabled		= 1
-Global $g_iStartBrowser		= 0
-Global $g_iExtProcsEnabled	= 1
+Global $g_iCoreProcessUsage	 = 0
+Global $g_iCoreProcessPeak	 = 0
+Global $g_iBoostEnabled		 = 1
+Global $g_iLimitEnabled		 = 1
+Global $g_iStartBrowser		 = 0
+Global $g_iExtProcsEnabled	 = 1
+Global $g_iShowNotifications = 0
 
 ;~ Working Directories needs to be set before language is loaded.
 _SetWorkingDirectories()
@@ -321,9 +322,6 @@ Global $g_iSizeIcon						= 64
 Global $g_aLognIcons[$CNT_LOGICONS]
 Global $g_aMenuIcons[$CNT_MENUICONS]
 Global $g_sDlgOptionsIcon
-
-;~ Logging Settings
-Global $g_iFirstRun			= 0
 
 ;~ Splash Page Settings
 Global $g_SplashAnimation 	= $g_sThemesDir & "\Processing\32\Stroke.ani"
@@ -400,6 +398,7 @@ If Not IsDeclared("g_iParentState") Then Global $g_iParentState
 If Not IsDeclared("g_iParent") Then Global $g_iParent
 
 Global $g_hOptionsGui
+Global $g_hOChkShowTrayTips
 Global $g_hOEditExtProcs
 Global $g_hOEditExtProcsTemp 		= ""
 Global $g_hOListLanguage
@@ -513,8 +512,8 @@ Func _StartCore()
 
 	_SetTrayItemStates()
 
-	If $g_iFirstRun = 1 Then
-
+	If Int(IniRead($g_sPathIni, $g_sProgShortName, "FirstRun", 1)) = 1 Then
+		IniWrite($g_sPathIni, $g_sProgShortName, "FirstRun", 0)
 		_StartCoreGui()
 	EndIf
 
@@ -547,10 +546,6 @@ Func _StartCoreGui()
 	If Not @Compiled Then GUISetIcon($g_aCoreIcons[0])
 	GUISetFont(8.5, 400, -1, "Verdana", $g_hCoreGui, $CLEARTYPE_QUALITY)
 	GUISetOnEvent($GUI_EVENT_CLOSE, "_CloseCoreGui", $g_hCoreGui)
-
-	GUIRegisterMsg($WM_GETMINMAXINFO, "WM_GETMINMAXINFO")
-	GUIRegisterMsg($WM_EXITSIZEMOVE, "WM_EXITSIZEMOVE")
-	GUIRegisterMsg($WM_SYSCOMMAND, "WM_SYSCOMMAND")
 
 	$g_hMenuFile = GUICtrlCreateMenu($g_aLangMenus[0])
 	$g_hMenuHelp = GUICtrlCreateMenu($g_aLangMenus[3])
@@ -698,23 +693,23 @@ Func _CloseCoreGui()
 
 	GUIDelete($g_hCoreGui)
 
+	If $g_iShowNotifications == 1 Then
+		TrayTip($g_aLangCustom[24], StringFormat($g_aLangCustom[25], $g_sBrowserName), 20,  $TIP_ICONASTERISK)
+	EndIf
+
 	_LoadConfiguration()
 	_SetTrayItemStates()
 
 	AdlibUnRegister("_OnIconsHover")
 	AdlibUnRegister("_GetCoreProcessPeak")
 
-	If $g_iFirstRun = 1 Then
-		TrayTip($g_aLangCustom[24], StringFormat($g_aLangCustom[25], $g_sBrowserName), 20,  $TIP_ICONASTERISK)
-	EndIf
-
 EndFunc
 
 
 Func _SetTrayItemStates()
 
-	TrayItemSetText($g_hTrItemBrsrRun, "Run " & $g_sBrowserName)
-	TrayItemSetText($g_hTrItemBrsrRunSafe, "Run " & $g_sBrowserName & " in Safemode")
+	TrayItemSetText($g_hTrItemBrsrRun, StringFormat($g_aLangMenus[14], $g_sBrowserName))
+	TrayItemSetText($g_hTrItemBrsrRunSafe, StringFormat($g_aLangMenus[15], $g_sBrowserName))
 
 	If _ReturnSafeModeCommand() == "" Then
 		TrayItemSetState($g_hTrItemBrsrRunSafe, $TRAY_DISABLE)
@@ -749,30 +744,6 @@ Func _ReduceMemory()
 	; _WinAPI_EmptyWorkingSet(@AutoItPID)
 EndFunc
 
-
-;~ https://www.autoitscript.com/forum/topic/99603-resize-but-dont-get-smaller-than-original-size/#comment-714621
-Func WM_GETMINMAXINFO($hWnd, $msg, $wParam, $lParam)
-	Local $tagMaxinfo = DllStructCreate("int;int;int;int;int;int;int;int;int;int", $lParam)
-	DllStructSetData($tagMaxinfo, 7, $g_iCoreGuiWidth) ; min X
-	DllStructSetData($tagMaxinfo, 8, $g_iCoreGuiHeight) ; min Y
-	Return 0
-EndFunc   ;==>WM_GETMINMAXINFO
-
-
-Func WM_SYSCOMMAND($hWnd, $msg, $wParam, $lParam)
-	Switch BitAND($wParam, 0xFFF0)
-		Case 0xF010, 0xF000
-			Local $tBool = DllStructCreate("int")
-			DllCall("user32.dll", "int", "SystemParametersInfo", "int", 38, "int", 0, "ptr", DllStructGetPtr($tBool), "int", 0)
-			$g_OldSystemParam = DllStructGetData($tBool, 1)
-			DllCall("user32.dll", "int", "SystemParametersInfo", "int", 37, "int", 0, "ptr", 0, "int", 2)
-	EndSwitch
-EndFunc   ;==>WM_SYSCOMMAND
-
-
-Func WM_EXITSIZEMOVE($hWnd, $msg, $wParam, $lParam)
-	DllCall("user32.dll", "int", "SystemParametersInfo", "int", 37, "int", $g_OldSystemParam, "ptr", 0, "int", 2)
-EndFunc   ;==>WM_EXITSIZEMOVE
 #EndRegion "Events"
 
 
@@ -887,8 +858,8 @@ Func _LoadConfiguration()
 	$g_iCleanLimit = Int(IniRead($g_sPathIni, $g_sProgShortName, "ReduceLimit", 10))
 	$g_iStartBrowser = Int(IniRead($g_sPathIni, $g_sProgShortName, "StartBrowser", 0))
 	$g_iExtProcsEnabled = Int(IniRead($g_sPathIni, $g_sProgShortName, "EnableExtendedProcs", 1))
+	$g_iShowNotifications = Int(IniRead($g_sPathIni, $g_sProgShortName, "ShowNotifications", 1))
 	$g_sExtendedProcs = IniRead($g_sPathIni, $g_sProgShortName, "ExtendedProcs", "plugin-container.exe")
-	$g_iFirstRun = Int(IniRead($g_sPathIni, $g_sProgShortName, "FirstRun", 1))
 
 	_LoadBrowser($g_sBrowserPath)
 
@@ -1092,9 +1063,6 @@ EndFunc   ;==>_SetProcessingStates
 Func _ShutdownProgram()
 
 	IniWrite($g_sPathIni, "Donate", "Seconds", $g_iUptimeMonitor)
-	If $g_iFirstRun = 1 Then
-		IniWrite($g_sPathIni, $g_sProgShortName, "FirstRun", 0)
-	EndIf
 
 	; AdlibUnRegister("_ReduceMemory")
 	AdlibUnRegister("_OnIconsHover")
@@ -1358,12 +1326,17 @@ Func _ShowPreferencesDlg()
 
 	GUICtrlCreateTab(10, 10, 430, 430)
 	GUICtrlCreateTabItem(StringFormat(" %s ", $g_aLangPreferences[1]))
-	GUICtrlCreateGroup($g_aLangPreferences[3], 25, 50, 400, 350)
+	GUICtrlCreateGroup($g_aLangPreferences[1], 25, 50, 400, 85)
 	GUICtrlSetFont(-1, 10, 700, 2)
-	GUICtrlCreateLabel($g_aLangPreferences[5], 45, 80, 365, 80)
+	$g_hOChkShowTrayTips = GUICtrlCreateCheckbox("Show tray notifications.", 45, 80, 365, 20)
+	GUICtrlSetState($g_hOChkShowTrayTips, $g_iShowNotifications)
+	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
+	GUICtrlCreateGroup($g_aLangPreferences[3], 25, 150, 400, 270)
+	GUICtrlSetFont(-1, 10, 700, 2)
+	GUICtrlCreateLabel($g_aLangPreferences[5], 45, 180, 365, 80)
 	GUICtrlSetColor(-1, 0x555555)
 	GUICtrlSetFont(-1, 9)
-	$g_hOEditExtProcs = GUICtrlCreateEdit("", 45, 160, 365, 150, $WS_VSCROLL + $ES_AUTOVSCROLL)
+	$g_hOEditExtProcs = GUICtrlCreateEdit("", 45, 250, 365, 150, $WS_VSCROLL + $ES_AUTOVSCROLL)
 	GUICtrlSetData($g_hOEditExtProcs, IniRead($g_sPathIni, $g_sProgShortName, "ExtendedProcs", "plugin-container.exe"))
 	GUICtrlSetState($g_hOEditExtProcs, $GUI_NOFOCUS)
 	GUICtrlSetFont($g_hOEditExtProcs, 9)
@@ -1372,6 +1345,8 @@ Func _ShowPreferencesDlg()
 	$g_hOEditExtProcsTemp = GUICtrlRead($g_hOEditExtProcs)
 	GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
 	GUICtrlCreateTabItem("") ; end tabitem definition
+
+	GUICtrlSetOnEvent($g_hOChkShowTrayTips, "__CheckPreferenceChange")
 
 	GUICtrlCreateTabItem(StringFormat(" %s ", $g_aLangPreferences[2]))
 	GUICtrlCreateGroup($g_aLangPreferences[4], 25, 50, 400, 350)
@@ -1451,6 +1426,19 @@ Func _ShowPreferencesDlg()
 EndFunc
 
 
+Func __CheckPreferenceChange()
+
+	If __CheckBoxChanged("LoggingEnabled", $g_hOChkShowTrayTips) = True Then
+		GUICtrlSetState($g_hOBtnSave, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
+	EndIf
+
+	GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_HIDE)
+
+EndFunc
+
+
 Func __CheckExtendedProcsChange()
 
 	Local $sEPTemp = GUICtrlRead($g_hOEditExtProcs)
@@ -1485,16 +1473,24 @@ Func __SavePreferences()
 	Local $sEPTemp = GUICtrlRead($g_hOEditExtProcs)
 	Local $sEPSavedTemp = IniRead($g_sPathIni, $g_sProgShortName, "ExtendedProcs", "plugin-container.exe")
 
+	If GUICtrlRead($g_hOChkShowTrayTips) = $GUI_CHECKED Then
+		$g_iShowNotifications = 1
+	ElseIf GUICtrlRead($g_hOChkShowTrayTips) = $GUI_UNCHECKED Then
+		$g_iShowNotifications = 0
+	EndIf
+
+	IniWrite($g_sPathIni, $g_sProgShortName, "ShowNotifications", $g_iShowNotifications)
+
 	If StringCompare($sEPTemp, $sEPSavedTemp) <> 0 Then
 		IniWrite($g_sPathIni, $g_sProgShortName, "ExtendedProcs", GUICtrlRead($g_hOEditExtProcs))
 	EndIf
 
 	If $g_tSelectedLanguage <> $g_sSelectedLanguage Then
-		Local $iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[11], $g_aLangPreferences[12], 0, $g_hOptionsGui)
+		Local $iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[10], $g_aLangPreferences[11], 0, $g_hOptionsGui)
 		Switch $iMsgBoxResult
 			Case 1
 				IniWrite($g_sPathIni, $g_sProgShortName, "Language", $g_tSelectedLanguage)
-				GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[11])
+				GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[10])
 				GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_SHOW)
 				GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
 				$iLangChanged = True
@@ -1505,7 +1501,7 @@ Func __SavePreferences()
 	EndIf
 
 	If $iLangChanged = True Then
-		$iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[13], $g_aLangPreferences[14], 0, $g_hOptionsGui)
+		$iMsgBoxResult = MsgBox($MB_OKCANCEL + $MB_ICONINFORMATION, $g_aLangPreferences[12], $g_aLangPreferences[13], 0, $g_hOptionsGui)
 		Switch $iMsgBoxResult
 			Case 1
 				_ShutdownProgram()
@@ -1513,7 +1509,7 @@ Func __SavePreferences()
 				$iLangChanged = False
 		EndSwitch
 	Else
-		GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[10])
+		GUICtrlSetData($g_hOLblPrefsUpdated, $g_aLangPreferences[9])
 		GUICtrlSetState($g_hOLblPrefsUpdated, $GUI_SHOW)
 		GUICtrlSetState($g_hOBtnSave, $GUI_DISABLE)
 	EndIf
@@ -1632,7 +1628,7 @@ Func __ISO639CodeToIndex($i639 = "en")
 		Case "ru"
 			$aLangInfo[0] = "Russian"
 			$aLangInfo[1] = 24
-		Case "si"
+		Case "sl"
 			$aLangInfo[0] = "Slovenian"
 			$aLangInfo[1] = 25
 		Case "sk"

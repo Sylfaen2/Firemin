@@ -6,6 +6,24 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Fix: Firemin Window showing on each run.
+- Fix: Firemin disables 'Show Window contents while dragging' Windows setting.
+- Fix: Wrong Slovenian flag icon.
+- Fix: Wrong 'settings updated' message.
+- Added: Setting for disabling tray notifications.
+- Clean: Removed redundant code.
+
+--------------------------------------------------
+Version 6.1.0.4935 (March 12, 2018)
+--------------------------------------------------
+
+- Added Simplified Chinese language.
+- Fixed Run Browser menu translated strings.
+
+--------------------------------------------------
+Version 6.1.0.4933 (March 06, 2018)
+--------------------------------------------------
+
 - Firemin still running tray notice now only shown on first run.
 - Unnecessary code cleanup.
 
