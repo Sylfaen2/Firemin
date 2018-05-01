@@ -6,6 +6,22 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Change: Help -> Contact to Help -> Get Support.
+- Change: Contact links to Support page links.
+
+## Language Changes
+
+- Added: Spanish Translation.
+- Added: Missing Singleton = Another occurence of %{Program.Name} is already running.
+- Fix: MsgBox_Language_Message language sting now retrieves correct program name. 
+- Help_Contact = &Contact %{Company.Name} changed to Help_Support = &Get Support.
+- Change: About -> Label_Support = Contact Us changed to Label_Support = Get Support.
+- Added: Preferences -> Checkbox_Notifications = Show tray notifications language string.
+
+--------------------------------------------------
+Version 6.1.0.4963 (March 19, 2018)
+--------------------------------------------------
+
 - Fix: Firemin Window showing on each run.
 - Fix: Firemin disables 'Show Window contents while dragging' Windows setting.
 - Fix: Wrong Slovenian flag icon.
