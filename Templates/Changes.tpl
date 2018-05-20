@@ -6,6 +6,72 @@
 Version %{VERSION} (%{MONTH} %{DAY}, %{YEAR})
 --------------------------------------------------
 
+- Change: Help -> Contact to Help -> Get Support.
+- Change: Contact links to Support page links.
+
+## Language Changes
+
+- Added: Spanish Translation.
+- Added: Missing Singleton = Another occurence of %{Program.Name} is already running.
+- Fix: MsgBox_Language_Message language sting now retrieves correct program name. 
+- Help_Contact = &Contact %{Company.Name} changed to Help_Support = &Get Support.
+- Change: About -> Label_Support = Contact Us changed to Label_Support = Get Support.
+- Added: Preferences -> Checkbox_Notifications = Show tray notifications language string.
+
+--------------------------------------------------
+Version 6.1.0.4963 (March 19, 2018)
+--------------------------------------------------
+
+- Fix: Firemin Window showing on each run.
+- Fix: Firemin disables 'Show Window contents while dragging' Windows setting.
+- Fix: Wrong Slovenian flag icon.
+- Fix: Wrong 'settings updated' message.
+- Added: Setting for disabling tray notifications.
+- Clean: Removed redundant code.
+
+--------------------------------------------------
+Version 6.1.0.4935 (March 12, 2018)
+--------------------------------------------------
+
+- Added Simplified Chinese language.
+- Fixed Run Browser menu translated strings.
+
+--------------------------------------------------
+Version 6.1.0.4933 (March 06, 2018)
+--------------------------------------------------
+
+- Firemin still running tray notice now only shown on first run.
+- Unnecessary code cleanup.
+
+## Language Changes
+
+- Fix: Language distribution to ensure language files are distributed.
+- Added German language file.
+- Added support for Hungarian language.
+- Added support for Slovenian language.
+- Added Slovenian language file.
+
+--------------------------------------------------
+Version 6.1.0.4920 (February 13, 2018)
+--------------------------------------------------
+
+- Fix: Not able to select language with installed version.
+- Removed installer update check. (Could be the reason behind all the false malware detections)
+- Update files are now downloaded to the Windows Temp directory.
+- Removed the caching folder, including related functions. (Redundant)
+- UPX Compressed. (was not causing the false malware detections)
+
+## Language Changes
+
+- Added language name translations next to english name.
+- Added instructions (comments) to help with translating in language files.
+- Added Japanese Language.
+- Added French Language.
+
+--------------------------------------------------
+Version 6.0.1.4898 (February 06, 2018)
+--------------------------------------------------
+
 - Fix: Tray icon now removed on program exit.
 - New: Tray message informing the user about Firemin still running in the background.
 - New: Single-Click on tray icon, now opens main interface.
